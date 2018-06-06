@@ -26,12 +26,12 @@ public class BithumbClientUtils {
 	
 		try {
 		    sha512_HMAC = Mac.getInstance("HmacSHA512");
-		    System.out.println("key : " + new String(key));
+//		    System.out.println("key : " + new String(key));
 		    SecretKeySpec secretkey = new SecretKeySpec(key, "HmacSHA512");
 		    sha512_HMAC.init(secretkey);
 	
 		    byte[] mac_data = sha512_HMAC.doFinal(data.getBytes());
-		    System.out.println("hex : " + bin2hex(mac_data));
+//		    System.out.println("hex : " + bin2hex(mac_data));
 		    result = Base64.encodeBase64String(mac_data);
 		} catch (Exception e) {
 		    e.printStackTrace();

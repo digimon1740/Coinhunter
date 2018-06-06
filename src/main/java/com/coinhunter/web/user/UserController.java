@@ -6,10 +6,9 @@ import com.coinhunter.service.MessageSourceService;
 import com.coinhunter.service.user.UserService;
 import com.coinhunter.utils.mapper.ModelMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/users")
@@ -30,8 +29,14 @@ public class UserController {
 		this.modelMapperUtils = modelMapperUtils;
 	}
 
+	@GetMapping(value = "{name}")
+	UserDto findOne(@PathVariable("name") String name) {
+		User user = userService.findByName(name);
+		return modelMapperUtils.convertToDto(user, UserDto.class);
+	}
+
 	@PostMapping(value = "/register")
-	UserDto register(@RequestBody UserDto userDto) throws Exception {
+	UserDto register(@RequestBody UserDto userDto) {
 		User user = modelMapperUtils.convertToEntity(userDto, User.class);
 		userService.register(user);
 		return userDto;

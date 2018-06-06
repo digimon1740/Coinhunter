@@ -1,6 +1,7 @@
 package com.coinhunter.model.user;
 
 
+import com.coinhunter.model.converter.PasswordConverter;
 import com.coinhunter.utils.common.EmailValidator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -29,6 +30,7 @@ public class User {
 
 	@NotNull
 	@Column(name = "password")
+	@Convert(converter = PasswordConverter.class)
 	private String password;
 
 	@NotNull

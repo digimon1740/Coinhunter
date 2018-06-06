@@ -1,6 +1,3 @@
-/**
- * @author SangHoon, Lee(devsh@helloworlds.co.kr)
- */
 package com.coinhunter.utils.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

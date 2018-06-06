@@ -1,4 +1,4 @@
-package com.coinhunter.error;
+package com.coinhunter.web.error;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

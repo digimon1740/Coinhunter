@@ -1,5 +1,7 @@
-package com.coinhunter.error;
+package com.coinhunter.web.error;
 
+import com.coinhunter.exception.ResourceExistsException;
+import com.coinhunter.exception.ResourceNotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -11,14 +13,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.persistence.EntityNotFoundException;
-
+// reference : https://www.toptal.com/java/spring-boot-rest-api-error-handling
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@Override
-	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(
+		HttpMessageNotReadableException ex,
+		HttpHeaders headers,
+		HttpStatus status,
+		WebRequest request) {
+
 		String error = "Malformed JSON request";
 		return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error, ex));
 	}
@@ -28,10 +34,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	//other exception handlers below
-	@ExceptionHandler(EntityNotFoundException.class)
-	protected ResponseEntity<Object> handleEntityNotFound(
-		EntityNotFoundException ex) {
+	@ExceptionHandler(ResourceNotFoundException.class)
+	protected ResponseEntity<Object> handleResourceNotFound(
+		ResourceNotFoundException ex) {
 		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
+		apiError.setMessage(ex.getMessage());
+		return buildResponseEntity(apiError);
+	}
+
+	@ExceptionHandler({ResourceExistsException.class, IllegalArgumentException.class})
+	protected ResponseEntity<Object> handleUnprocessableEntity(
+		RuntimeException ex) {
+		ApiError apiError = new ApiError(HttpStatus.UNPROCESSABLE_ENTITY);
 		apiError.setMessage(ex.getMessage());
 		return buildResponseEntity(apiError);
 	}

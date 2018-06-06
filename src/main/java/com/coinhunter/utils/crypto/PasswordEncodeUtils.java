@@ -1,4 +1,4 @@
-package com.coinhunter.utils.crypt;
+package com.coinhunter.utils.crypto;
 
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
