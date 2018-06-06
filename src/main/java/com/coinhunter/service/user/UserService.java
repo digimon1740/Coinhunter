@@ -1,16 +1,15 @@
 package com.coinhunter.service.user;
 
 import com.coinhunter.exception.ResourceExistsException;
-import com.coinhunter.model.user.User;
+import com.coinhunter.domain.user.User;
 import com.coinhunter.repository.UserRepository;
 import com.coinhunter.service.MessageSourceService;
 import com.coinhunter.utils.common.EmailValidator;
-import org.apache.commons.lang3.StringUtils;
+import com.coinhunter.utils.text.RandomStringMaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
 
 @Service
 public class UserService {
@@ -50,5 +49,19 @@ public class UserService {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.exists"));
 		}
 		return userRepository.save(user);
+	}
+
+	@Transactional
+	public String resetPassword(String name) {
+		Assert.hasText(name, messageSourceService.getMessage("user.name.invalid"));
+
+		User user = findByName(name);
+		if (user == null) {
+			throw new ResourceExistsException(messageSourceService.getMessage("user.not.exists"));
+		}
+		int length = 8; // 패스워드 길이 기본 정책
+		String generated = RandomStringMaker.generate('0', 'z', length);
+		user.setPassword(generated);
+		return generated;
 	}
 }

@@ -26,13 +26,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		com.coinhunter.model.user.User user = userService.findByName(userName);
+		com.coinhunter.domain.user.User user = userService.findByName(userName);
 		if (user == null) {
 			log.info("User not found :  {}", userName);
 			throw new UsernameNotFoundException("User " + userName + " was not found in the database");
 		}
 
-		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+		List<GrantedAuthority> grantList = new ArrayList<>();
 		GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
 		grantList.add(authority);
 

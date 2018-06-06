@@ -1,7 +1,7 @@
 package com.coinhunter.client.bithumb;
 
-import com.coinhunter.model.value.CryptoCurrency;
-import com.coinhunter.model.value.CurrencyType;
+import com.coinhunter.domain.value.CryptoCurrency;
+import com.coinhunter.domain.value.CurrencyType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.StringSubstitutor;
 import org.junit.Assert;

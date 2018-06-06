@@ -1,4 +1,4 @@
-package com.coinhunter.model.strategy;
+package com.coinhunter.domain.strategy;
 
 import lombok.AllArgsConstructor;
 

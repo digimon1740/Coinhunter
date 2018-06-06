@@ -1,7 +1,7 @@
 package com.coinhunter.utils.mapper;
 
 import com.coinhunter.dto.user.UserDto;
-import com.coinhunter.model.user.User;
+import com.coinhunter.domain.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

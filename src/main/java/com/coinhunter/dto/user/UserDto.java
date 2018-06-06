@@ -1,7 +1,6 @@
 package com.coinhunter.dto.user;
 
-import com.coinhunter.model.user.Role;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.coinhunter.domain.user.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -28,6 +27,4 @@ public class UserDto {
 	private Role role = Role.ROLE_USER;
 
 	private LocalDateTime lastLoginTime;
-
-	private LocalDateTime regTime;
 }

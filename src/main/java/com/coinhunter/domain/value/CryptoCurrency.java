@@ -1,4 +1,4 @@
-package com.coinhunter.model.value;
+package com.coinhunter.domain.value;
 
 import org.springframework.util.CollectionUtils;
 

@@ -1,4 +1,4 @@
-package com.coinhunter.model.user;
+package com.coinhunter.domain.user;
 
 import org.springframework.util.StringUtils;
 

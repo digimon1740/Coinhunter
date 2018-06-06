@@ -28,10 +28,4 @@ public class HelloController {
 		return "redirect:layout.html";
 	}
 
-	// Added to test 500 page
-	@RequestMapping(path = "/trigger-error", produces = MediaType.APPLICATION_JSON_VALUE)
-	public void error500() throws Exception {
-		throw new Exception();
-	}
-
 }

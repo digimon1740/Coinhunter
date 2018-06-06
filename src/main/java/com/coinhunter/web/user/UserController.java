@@ -1,14 +1,12 @@
 package com.coinhunter.web.user;
 
 import com.coinhunter.dto.user.UserDto;
-import com.coinhunter.model.user.User;
+import com.coinhunter.domain.user.User;
 import com.coinhunter.service.MessageSourceService;
 import com.coinhunter.service.user.UserService;
 import com.coinhunter.utils.mapper.ModelMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/users")
@@ -29,7 +27,7 @@ public class UserController {
 		this.modelMapperUtils = modelMapperUtils;
 	}
 
-	@GetMapping(value = "{name}")
+	@GetMapping(value = "/{name}")
 	UserDto findOne(@PathVariable("name") String name) {
 		User user = userService.findByName(name);
 		return modelMapperUtils.convertToDto(user, UserDto.class);
@@ -40,5 +38,10 @@ public class UserController {
 		User user = modelMapperUtils.convertToEntity(userDto, User.class);
 		userService.register(user);
 		return userDto;
+	}
+
+	@PostMapping(value = "/reset-password")
+	String resetPassword(@RequestParam("name") String name) {
+		return userService.resetPassword(name);
 	}
 }

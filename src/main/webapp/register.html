@@ -127,8 +127,8 @@
 							<p class="text-center m-b-3">회원가입이 완료되면, 관리자 검토 후 사용승인됩니다.</p>
 							<form name="registerForm" method="post">
 								<div class="form-group">
-									<label>이름(아이디)</label>
-									<input name="name" type="text" class="form-control" placeholder="이름을 입력해주세요.">
+									<label>아이디</label>
+									<input name="name" type="text" class="form-control" placeholder="아이디를 입력해주세요.">
 								</div>
 								<div class="form-group">
 									<label>비밀번호 (8자리 이상, 숫자와 영어를 포함)</label>
@@ -148,7 +148,7 @@
 								</div>
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="emailAccepted"> 이메일 수신 동의
+										<input type="checkbox" name="emailAccepted" checked> 이메일 수신 동의
 									</label>
 								</div>
 								<input type="submit" href="#" role="button" class="btn m-b-2 btn-block btn-primary" value="등록신청">
@@ -167,36 +167,35 @@
 <script src="/js/lib/jquery-2.1.1.js"></script>
 <script>
 	// Hide loader
-	(function () {
-		var bodyElement = document.querySelector('body');
+	(() => {
+		let bodyElement = document.querySelector('body');
 		bodyElement.classList.add('loading');
 
-		document.addEventListener('readystatechange', function () {
+		document.addEventListener('readystatechange', () => {
 			if (document.readyState === 'complete') {
-				var bodyElement = document.querySelector('body');
-				var loaderElement = document.querySelector('#initial-loader');
+				let bodyElement = document.querySelector('body');
+				let loaderElement = document.querySelector('#initial-loader');
 
 				bodyElement.classList.add('loaded');
-				setTimeout(function () {
+				setTimeout(() => {
 					bodyElement.removeChild(loaderElement);
 					bodyElement.classList.remove('loading', 'loaded');
 				}, 200);
 			}
 		});
 
-		var registerForm = document.querySelector("[name=registerForm]");
-		registerForm.addEventListener('submit', function (event) {
+		let registerForm = document.querySelector("[name=registerForm]");
+		registerForm.addEventListener('submit', (event) => {
 			event.preventDefault();
-			event.stopPropagation();
 
-			var name = document.querySelector("[name=name]");
-			var password = document.querySelector("[name=password]");
-			var confirmPassword = document.querySelector("[name=confirmPassword]");
-			var cellphone = document.querySelector("[name=cellphone]");
-			var email = document.querySelector("[name=email]");
-			var emailAccepted = document.querySelector("[name=emailAccepted]");
+			let name = document.querySelector("[name=name]");
+			let password = document.querySelector("[name=password]");
+			let confirmPassword = document.querySelector("[name=confirmPassword]");
+			let cellphone = document.querySelector("[name=cellphone]");
+			let email = document.querySelector("[name=email]");
+			let emailAccepted = document.querySelector("[name=emailAccepted]");
 
-			var regExp = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
+			let regExp = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
 			if (!regExp.test(password.value)) {
 				alert("비밀번호는 최소한 8자리 이상, 숫자와 영어를 포함해야합니다.");
 				password.focus();
@@ -224,10 +223,8 @@
 					email: $.trim(email.value),
 					emailAccepted: $(emailAccepted).is(':checked')
 				}),
-				success: function () {
-					location.href = '/';
-				},
-				error: function (response, status, errorThrown) {
+				success: () => location.href = '/',
+				error: (response) => {
 					if (!response.responseJSON) {
 						alert("오류가 발생하였습니다. 시스템관리자에게 연락해주세요.");
 						return;
@@ -235,7 +232,6 @@
 					alert(response.responseJSON.message);
 				}
 			});
-
 			return false;
 		});
 	})();

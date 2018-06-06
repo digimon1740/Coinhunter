@@ -1,8 +1,8 @@
-package com.coinhunter.model.watch;
+package com.coinhunter.domain.watch;
 
-import com.coinhunter.model.user.ApiKey;
-import com.coinhunter.model.user.User;
-import com.coinhunter.model.value.CryptoCurrency;
+import com.coinhunter.domain.user.ApiKey;
+import com.coinhunter.domain.user.User;
+import com.coinhunter.domain.value.CryptoCurrency;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;

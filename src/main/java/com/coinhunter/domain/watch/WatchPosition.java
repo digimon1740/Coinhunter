@@ -1,4 +1,4 @@
-package com.coinhunter.model.watch;
+package com.coinhunter.domain.watch;
 
 public enum WatchPosition {
 	BUY, SELL

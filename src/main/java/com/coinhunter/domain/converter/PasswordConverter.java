@@ -1,4 +1,4 @@
-package com.coinhunter.model.converter;
+package com.coinhunter.domain.converter;
 
 import com.coinhunter.utils.crypto.PasswordEncodeUtils;
 import org.springframework.stereotype.Component;

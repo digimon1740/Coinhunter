@@ -33,7 +33,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(apiError, apiError.getStatus());
 	}
 
-	//other exception handlers below
 	@ExceptionHandler(ResourceNotFoundException.class)
 	protected ResponseEntity<Object> handleResourceNotFound(
 		ResourceNotFoundException ex) {

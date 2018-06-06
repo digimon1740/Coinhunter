@@ -1,7 +1,6 @@
-package com.coinhunter.model.user;
+package com.coinhunter.domain.user;
 
-import com.coinhunter.model.user.User;
-import com.coinhunter.model.value.Exchange;
+import com.coinhunter.domain.value.Exchange;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;

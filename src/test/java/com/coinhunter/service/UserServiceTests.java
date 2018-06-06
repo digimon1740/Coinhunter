@@ -1,9 +1,10 @@
 package com.coinhunter.service;
 
 
-import com.coinhunter.model.user.User;
+import com.coinhunter.domain.user.User;
 import com.coinhunter.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,13 @@ public class UserServiceTests {
 		user.setPassword("tototo");
 		user.setEmail("ddd@");
 		userService.register(user);
+	}
+
+	@Test
+	@Transactional
+	public void resetPasswordTest() {
+		String newPassword = userService.resetPassword("admin");
+		Assert.assertNotNull(newPassword);
+		log.info("newPassword : {}", newPassword);
 	}
 }

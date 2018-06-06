@@ -3,6 +3,7 @@ grant create, select, insert, update, delete, drop on coinhunter.* to 'coinhunte
 flush privileges;
 
 -- Used by Spring Remember Me API.
+DROP TABLE IF EXISTS `Persistent_Logins`;
 CREATE TABLE Persistent_Logins (
     username varchar(64) not null,
     series varchar(64) not null,
@@ -45,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `watch_bot_list` (
   `user_id` BIGINT(100)  NOT NULL,
   `api_key_id` BIGINT(100)  NOT NULL,
   `name` varchar(200) NOT NULL,
-  `coinType` varchar(10) NOT NULL,
+  `coin_type` varchar(10) NOT NULL,
   `term` tinyint(1) NOT NULL default 5,
   `auto_trading` tinyint(1) NOT NULL default 0,
   `notified` tinyint(1) NOT NULL default 0,
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `order_logs` (
   `id`                BIGINT(20)  NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT(100)  NOT NULL,
   `watch_bot_id` BIGINT(100)  NOT NULL,
-  `coinType` varchar(10) NOT NULL,
+  `coin_type` varchar(10) NOT NULL,
   `order_method` enum('BUY','SELL') default 'BUY',
   `strategy` text NOT NULL,
   `quantity` decimal(10,4) NOT NULL,

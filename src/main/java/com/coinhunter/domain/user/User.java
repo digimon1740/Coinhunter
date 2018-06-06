@@ -1,13 +1,10 @@
-package com.coinhunter.model.user;
+package com.coinhunter.domain.user;
 
 
-import com.coinhunter.model.converter.PasswordConverter;
-import com.coinhunter.utils.common.EmailValidator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.coinhunter.domain.converter.PasswordConverter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -56,12 +53,4 @@ public class User {
 
 	@Column(name = "reg_time")
 	private LocalDateTime regTime;
-
-	public boolean emailValidated() {
-		String email = this.email;
-		if (StringUtils.isEmpty(email))
-			return false;
-		// TODO 대소문자형식 체크해야함
-		return EmailValidator.isValid(email);
-	}
 }

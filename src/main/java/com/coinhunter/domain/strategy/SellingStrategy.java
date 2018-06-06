@@ -1,7 +1,7 @@
-package com.coinhunter.model.strategy;
+package com.coinhunter.domain.strategy;
 
-import com.coinhunter.model.watch.WatchBot;
-import com.coinhunter.model.user.User;
+import com.coinhunter.domain.watch.WatchBot;
+import com.coinhunter.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;

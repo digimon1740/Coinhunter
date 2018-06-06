@@ -1,4 +1,4 @@
-package com.coinhunter.model.order;
+package com.coinhunter.domain.order;
 
 public enum OrderMethod {
 

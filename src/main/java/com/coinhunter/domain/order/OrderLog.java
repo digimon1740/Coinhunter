@@ -1,9 +1,9 @@
-package com.coinhunter.model.order;
+package com.coinhunter.domain.order;
 
-import com.coinhunter.model.strategy.Strategy;
-import com.coinhunter.model.watch.WatchBot;
-import com.coinhunter.model.user.User;
-import com.coinhunter.model.value.CryptoCurrency;
+import com.coinhunter.domain.strategy.Strategy;
+import com.coinhunter.domain.watch.WatchBot;
+import com.coinhunter.domain.user.User;
+import com.coinhunter.domain.value.CryptoCurrency;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
