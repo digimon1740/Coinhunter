@@ -23,7 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 
 	@Autowired
-	public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, DataSource dataSource) {
+	public WebSecurityConfig(
+		UserDetailsServiceImpl userDetailsService, DataSource dataSource) {
 		this.userDetailsService = userDetailsService;
 		this.dataSource = dataSource;
 	}
@@ -55,17 +56,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
 		http.csrf().disable();
 
 		// The pages does not require login
 		http.authorizeRequests().antMatchers("/", "/login", "/logout", "/users/register", "/users/reset-password").permitAll();
 
+		// For ADMIN only.
+		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+
 		// /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
 		// If no login, it will redirect to /login page.
 		http.authorizeRequests().anyRequest().access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
-		// For ADMIN only.
-		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
 
 		// When the user has logged in as XX.
 		// But access a page that requires role YY,
@@ -77,25 +78,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// Submit URL of login page.
 			.loginProcessingUrl("/j_spring_security_check") // Submit URL
 			.loginPage("/login")//
-			.defaultSuccessUrl("/userAccountInfo")//
+			.defaultSuccessUrl("/main", true)
 			.failureUrl("/login?error=true")//
 			.usernameParameter("username")//
 			.passwordParameter("password")
 			// Config for Logout Page
-			.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+			.and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
 
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/my-error-page");
-		// Config Remember Me.
-//		http.authorizeRequests().and() //
-//			.rememberMe().tokenRepository(this.persistentTokenRepository()) //
-//			.tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
 	}
-
-//	@Bean
-//	public PersistentTokenRepository persistentTokenRepository() {
-//		JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
-//		db.setDataSource(dataSource);
-//		return db;
-//	}
-
 }

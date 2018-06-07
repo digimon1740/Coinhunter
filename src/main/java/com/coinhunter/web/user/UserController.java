@@ -41,7 +41,7 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/reset-password")
-	String resetPassword(@RequestParam("name") String name) {
-		return userService.resetPassword(name);
+	String resetPassword(@RequestParam("name") String name, @RequestParam("email") String email) {
+		return userService.resetPassword(name, email);
 	}
 }

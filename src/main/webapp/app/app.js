@@ -26,9 +26,6 @@ define(['angular', 'i18n!i18n-nls/app/nls/app-i18n', 'controllers/controllers', 
 
 		const activationUrlMap = {
 			'cms': ['sellers', 'members'],
-			'withdraw': ['withdraw-results', 'withdraw-requests', 'withdraw-pendings', 'withdraw-recalls'],
-			'settlement': ['calculates', 'settlement-histories'],
-			'settings': ['demand-settings', 'holiday-settings']
 		};
 
 		function activeMenu(type) {

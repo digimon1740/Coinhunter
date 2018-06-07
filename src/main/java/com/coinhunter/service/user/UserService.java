@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.LocalDateTime;
+
 @Service
 public class UserService {
 
@@ -34,8 +36,9 @@ public class UserService {
 		return userRepository.findByEmail(email);
 	}
 
-	private boolean userExists(String name, String email) {
-		return findByName(name) != null || findByEmail(email) != null;
+	@Transactional(readOnly = true)
+	public User findByNameAndEmail(String name, String email) {
+		return userRepository.findByNameAndEmail(name, email);
 	}
 
 	@Transactional
@@ -45,17 +48,20 @@ public class UserService {
 		Assert.hasText(user.getEmail(), messageSourceService.getMessage("user.email.invalid"));
 		Assert.isTrue(EmailValidator.isValid(user.getEmail()), messageSourceService.getMessage("user.email.invalid"));
 
-		if (userExists(user.getName(), user.getEmail())) {
+		User exists = findByNameAndEmail(user.getName(), user.getEmail());
+		if (exists != null) {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.exists"));
 		}
 		return userRepository.save(user);
 	}
 
 	@Transactional
-	public String resetPassword(String name) {
+	public String resetPassword(String name, String email) {
 		Assert.hasText(name, messageSourceService.getMessage("user.name.invalid"));
+		Assert.hasText(email, messageSourceService.getMessage("user.email.invalid"));
+		Assert.isTrue(EmailValidator.isValid(email), messageSourceService.getMessage("user.email.invalid"));
 
-		User user = findByName(name);
+		User user = findByNameAndEmail(name, email);
 		if (user == null) {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.not.exists"));
 		}
@@ -63,5 +69,17 @@ public class UserService {
 		String generated = RandomStringMaker.generate('0', 'z', length);
 		user.setPassword(generated);
 		return generated;
+	}
+
+	@Transactional
+	public LocalDateTime stampLoginTime(String name) {
+		Assert.hasText(name, messageSourceService.getMessage("user.name.invalid"));
+		User user = findByName(name);
+		if (user == null) {
+			throw new ResourceExistsException(messageSourceService.getMessage("user.not.exists"));
+		}
+		LocalDateTime now = LocalDateTime.now();
+		user.setLastLoginTime(now);
+		return now;
 	}
 }

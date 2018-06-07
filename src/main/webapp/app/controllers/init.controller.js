@@ -5,8 +5,8 @@ define(function () {
 	function controller($rootScope, $scope, $routeParams, UserService) {
 
 		$scope.user = {
-			email: '',
-			name: ''
+			name: '',
+			email: ''
 		};
 
 		(() => {

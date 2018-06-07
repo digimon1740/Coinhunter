@@ -37,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		grantList.add(authority);
 
 		UserDetails userDetails = new User(user.getName(), user.getPassword(), grantList);
+		userService.stampLoginTime(user.getName());
 		return userDetails;
 	}
 }

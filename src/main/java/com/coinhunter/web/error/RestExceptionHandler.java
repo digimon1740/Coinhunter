@@ -1,5 +1,6 @@
 package com.coinhunter.web.error;
 
+import com.coinhunter.exception.AccessDeniedException;
 import com.coinhunter.exception.ResourceExistsException;
 import com.coinhunter.exception.ResourceNotFoundException;
 import org.springframework.core.Ordered;
@@ -31,6 +32,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {
 		return new ResponseEntity<>(apiError, apiError.getStatus());
+	}
+
+	@ExceptionHandler({AccessDeniedException.class})
+	protected ResponseEntity<Object> handleAccessDenied(
+		ResourceNotFoundException ex) {
+		ApiError apiError = new ApiError(HttpStatus.FORBIDDEN);
+		apiError.setMessage(ex.getMessage());
+		return buildResponseEntity(apiError);
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)

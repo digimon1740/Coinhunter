@@ -24,8 +24,7 @@ public class HelloController {
 	}
 
 	@GetMapping(value = "/main")
-	public String main() throws Exception {
-		return "redirect:layout.html";
+	public String main() {
+		return "redirect:main.html";
 	}
-
 }
