@@ -5,6 +5,7 @@ import com.coinhunter.domain.user.User;
 import com.coinhunter.repository.UserRepository;
 import com.coinhunter.service.MessageSourceService;
 import com.coinhunter.utils.common.EmailValidator;
+import com.coinhunter.utils.crypto.PasswordEncodeUtils;
 import com.coinhunter.utils.text.RandomStringMaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,7 @@ public class UserService {
 		if (exists != null) {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.exists"));
 		}
+		user.setPassword(PasswordEncodeUtils.encodePassword(user.getPassword()));
 		return userRepository.save(user);
 	}
 
@@ -67,7 +69,7 @@ public class UserService {
 		}
 		int length = 8; // 패스워드 길이 기본 정책
 		String generated = RandomStringMaker.generate('0', 'z', length);
-		user.setPassword(generated);
+		user.setPassword(PasswordEncodeUtils.encodePassword(generated));
 		return generated;
 	}
 

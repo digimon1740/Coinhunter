@@ -1,7 +1,5 @@
 package com.coinhunter.domain.user;
 
-
-import com.coinhunter.domain.converter.PasswordConverter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,7 +25,6 @@ public class User {
 
 	@NotNull
 	@Column(name = "password")
-	@Convert(converter = PasswordConverter.class)
 	private String password;
 
 	@NotNull
@@ -53,4 +50,5 @@ public class User {
 
 	@Column(name = "reg_time")
 	private LocalDateTime regTime;
+
 }
