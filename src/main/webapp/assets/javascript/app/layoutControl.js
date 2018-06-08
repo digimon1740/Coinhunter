@@ -91,9 +91,12 @@
                 attributes: true
             });
 
-            classObserver.observe(contentContainer, {
-                attributes: true
-            });
+            try {
+				classObserver.observe(contentContainer, {
+					attributes: true
+				});
+			} catch(e) {
+            }
         },
 
         /***

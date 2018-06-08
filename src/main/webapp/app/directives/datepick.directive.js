@@ -1,6 +1,6 @@
 "use strict";
 
-define(['angular', 'i18n!i18n-nls/cms/nls/cms-i18n'], function (angular, i18n) {
+define(['angular', 'i18n!i18n-nls/app/nls/app-i18n'], function (angular, i18n) {
 
 	let directive = function (ToastService) {
 		return function (scope, elm, attrs) {

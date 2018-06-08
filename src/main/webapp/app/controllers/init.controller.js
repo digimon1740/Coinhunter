@@ -10,9 +10,13 @@ define(function () {
 		};
 
 		(() => {
-			UserService.get({}, (data) => {
-				$scope.user = data;
-			});
+			// UserService.get({}, (data) => {
+			// 	$scope.user = data;
+			// });
+
+
+			//script.onload = () => this.doSomethingWhenScriptIsLoaded();
+
 
 		})();
 	}

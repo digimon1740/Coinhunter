@@ -6,8 +6,7 @@ define(function (require) {
 		config = require('config'),
 		services = angular.module('app.services', ['app.config']);
 
-	// API services
-	services.factory('UserService', require('services/api/user.service'));
+	services.factory('UserService', require('services/user/user.service'));
 
 
 	// Shared modules

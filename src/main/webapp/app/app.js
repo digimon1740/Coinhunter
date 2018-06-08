@@ -18,7 +18,7 @@ define(['angular', 'i18n!i18n-nls/app/nls/app-i18n', 'controllers/controllers', 
 
 		function currentHashUrl() {
 			let url = location.hash.replace('#/', '');
-			if (url.indexOf('?') != -1) {
+			if (url.indexOf('?') !== -1) {
 				url = url.substring(0, url.indexOf('?'));
 			}
 			return url;
@@ -51,6 +51,20 @@ define(['angular', 'i18n!i18n-nls/app/nls/app-i18n', 'controllers/controllers', 
 			}
 		}
 
+		let layoutScripts = [
+			"assets/javascript/app/helpers.js",
+			"assets/javascript/app/layoutControl.js",
+			"assets/javascript/app/rightSidebar.js",
+			"assets/javascript/app/sidebar.js",
+			"assets/javascript/app/main.js",
+		];
+
+		layoutScripts.forEach((layoutScript) => {
+			let script = document.createElement('script');
+			script.src = layoutScript;
+			script.async = false;
+			document.body.appendChild(script);
+		});
 	});
 
 	return app;
