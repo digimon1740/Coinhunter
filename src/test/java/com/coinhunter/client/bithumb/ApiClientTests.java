@@ -24,12 +24,6 @@ public class ApiClientTests {
 	@Value("${bithumb.base.url}")
 	private String apiUrl;
 
-	@Value("${bithumb.api.key}")
-	private String apikey;
-
-	@Value("${bithumb.secret.key}")
-	private String apiSecret;
-
 	@Value("${bithumb.market.list.url}")
 	private String marketListUrl;
 
@@ -40,7 +34,9 @@ public class ApiClientTests {
 	private String balanceUrl;
 
 	private String fetchResultFromApi(String url, HashMap<String, String> params) {
-		BithumbApiClient api = new BithumbApiClient(apiUrl, apikey, apiSecret);
+		String apiKey = "a10db8e9fd04e5e8d4a0f1188ce20f63";
+		String apiSecret = "0f06b1f51733b6af38095366be319d29";
+		BithumbApiClient api = new BithumbApiClient(apiUrl, apiKey, apiSecret);
 		String result = null;
 		try {
 			result = api.callApi(url, params);

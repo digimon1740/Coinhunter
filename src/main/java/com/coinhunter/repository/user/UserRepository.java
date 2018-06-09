@@ -1,4 +1,4 @@
-package com.coinhunter.repository;
+package com.coinhunter.repository.user;
 
 import com.coinhunter.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,7 @@
 package com.coinhunter.domain.user;
 
 import com.coinhunter.domain.value.Exchange;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @ToString
-@Table(name = "api_key")
+@Table(name = "api_keys")
 @Entity
 @JsonIgnoreProperties(value = {"id", "user"})
 public class ApiKey {
@@ -22,7 +23,8 @@ public class ApiKey {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 

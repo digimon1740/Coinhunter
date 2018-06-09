@@ -6,10 +6,13 @@ define(function (require) {
 		services = require('services/services'),
 		controllers = angular.module('app.controllers', ['app.services']);
 
-	// init
 	controllers.controller('InitCtrl', require('controllers/init.controller'));
 
-	// controllers.controller('CmsListCtrl', require('controllers/cms/cms.list.controller'));
+	// Trading
+	controllers.controller('TradingCtrl', require('controllers/trading/trading.controller'));
+
+	// Account
+	controllers.controller('ProfileCtrl', require('controllers/account/profile.controller'));
 
 	controllers.run(['$rootScope', function ($rootScope) {
 		$rootScope.sampleParam = "value";

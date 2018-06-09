@@ -5,26 +5,40 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Slf4j
 @Component
 public class HttpClient {
 
-	private String server;
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
 
-	private HttpClient() {
+	public HttpClient() {
 		this.rest = new RestTemplate();
 		this.headers = new HttpHeaders();
 		headers.add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 		headers.add("Accept", "*/*");
 	}
 
+	public HttpClient(HttpHeaders headers) {
+		this.rest = new RestTemplate();
+		this.headers = headers;
+		this.headers.add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+		this.headers.add("Accept", "*/*");
+	}
+
 	public String get(String uri) {
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
-		//log.info("uri : {}",server + uri);
-		ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.GET, requestEntity, String.class);
+		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+		this.setStatus(responseEntity.getStatusCode());
+		return responseEntity.getBody();
+	}
+
+	public String post(String uri, Map<String, String> body) {
+		HttpEntity requestEntity = new HttpEntity(body, headers);
+		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
 		this.setStatus(responseEntity.getStatusCode());
 		return responseEntity.getBody();
 	}
@@ -37,11 +51,4 @@ public class HttpClient {
 		this.status = status;
 	}
 
-	public void setServer(String server) {
-		this.server = server;
-	}
-
-	public String getServer() {
-		return this.server;
-	}
 }

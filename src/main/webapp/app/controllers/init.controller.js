@@ -4,21 +4,17 @@ define(function () {
 
 	function controller($rootScope, $scope, $routeParams, UserService) {
 
-		$scope.user = {
-			name: '',
-			email: ''
-		};
+		$scope.user = {};
 
-		(() => {
-			// UserService.get({}, (data) => {
-			// 	$scope.user = data;
-			// });
+		$scope.goToMain = goToMain;
 
+		UserService.get({}, (data) => {
+			$scope.user = data;
+		});
 
-			//script.onload = () => this.doSomethingWhenScriptIsLoaded();
-
-
-		})();
+		function goToMain() {
+			location.href = '/main';
+		}
 	}
 
 	controller.$inject = ['$rootScope', '$scope', '$routeParams', 'UserService'];

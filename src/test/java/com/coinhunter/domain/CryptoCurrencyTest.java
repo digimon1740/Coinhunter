@@ -16,4 +16,11 @@ public class CryptoCurrencyTest {
 		Assert.assertNotNull(allCurrencies);
 		allCurrencies.stream().forEach(currency -> log.info("coin : {}", currency.name()));
 	}
+
+	@Test
+	public void ofTest() {
+		CryptoCurrency cryptoCurrency = CryptoCurrency.of("eos");
+		Assert.assertNotNull(cryptoCurrency);
+		log.info("cryptoCurrency : {}",cryptoCurrency);
+	}
 }

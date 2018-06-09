@@ -2,12 +2,14 @@ package com.coinhunter.service.user;
 
 import com.coinhunter.exception.ResourceExistsException;
 import com.coinhunter.domain.user.User;
-import com.coinhunter.repository.UserRepository;
+import com.coinhunter.repository.user.UserRepository;
 import com.coinhunter.service.MessageSourceService;
 import com.coinhunter.utils.common.EmailValidator;
 import com.coinhunter.utils.crypto.PasswordEncodeUtils;
 import com.coinhunter.utils.text.RandomStringMaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -49,7 +51,7 @@ public class UserService {
 		Assert.hasText(user.getEmail(), messageSourceService.getMessage("user.email.invalid"));
 		Assert.isTrue(EmailValidator.isValid(user.getEmail()), messageSourceService.getMessage("user.email.invalid"));
 
-		User exists = findByNameAndEmail(user.getName(), user.getEmail());
+		User exists = findByName(user.getName());
 		if (exists != null) {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.exists"));
 		}

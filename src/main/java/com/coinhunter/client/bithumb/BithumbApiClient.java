@@ -17,6 +17,7 @@ import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 public class BithumbApiClient {
@@ -159,7 +160,7 @@ public class BithumbApiClient {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String callApi(String endpoint, HashMap<String, String> params) {
+	public String callApi(String endpoint, Map<String, String> params) {
 		String rgResultDecode = "";
 		HashMap<String, String> rgParams = new HashMap<String, String>();
 		rgParams.put("endpoint", endpoint);

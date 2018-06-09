@@ -10,6 +10,7 @@ require.config({
 		'angular.resource': '/js/lib/angular-resource',
 		'angular.ui.bootstrap': '/js/lib/angular-ui-bootstrap',
 		'angular.InfiniteScroll': '/js/lib/ng-infinite-scroll.min',
+		'angular.stomp': '/js/lib/ng-stomp.standalone.min',
 		'objectUtils': '/js/assets/objectUtils',
 		'dynamicFilter': '/js/assets/dynamicFilter',
 		'moment': '/js/lib/moment.min',
@@ -30,6 +31,9 @@ require.config({
 		'angular.InfiniteScroll': { //https://sroze.github.io/ngInfiniteScroll/demo_basic.html#
 			deps: ['angular']
 		},
+		'angular.stomp': { //https://github.com/beevelop/ng-stomp
+			deps: ['angular']
+		},
 		'dynamicFilter': {
 			deps: ['objectUtils']
 		},
@@ -41,10 +45,10 @@ require.config({
 
 const importDependencies = ['angular', 'underscore', 'app', 'routes',
 	'angular.route', 'angular.resource',
-	'angular.ui.bootstrap', 'angular.InfiniteScroll', 'dynamicFilter', 'moment'];
+	'angular.ui.bootstrap', 'angular.InfiniteScroll', 'angular.stomp', 'dynamicFilter', 'moment'];
 
 require(importDependencies, (angular, _,) => {
 
-		angular.bootstrap(document, ['app']);    //  app start
+	angular.bootstrap(document, ['app']);    //  app start
 
 });

@@ -1,6 +1,9 @@
 package com.coinhunter.dto.user;
 
 import com.coinhunter.domain.user.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,8 +15,11 @@ import java.time.LocalDateTime;
 @ToString
 public class UserDto {
 
+	private long id;
+
 	private String name;
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 
 	private String email;

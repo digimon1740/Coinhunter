@@ -1,4 +1,4 @@
-package com.coinhunter.service;
+package com.coinhunter.service.user;
 
 
 import com.coinhunter.domain.user.User;

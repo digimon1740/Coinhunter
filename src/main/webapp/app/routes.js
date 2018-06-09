@@ -1,16 +1,16 @@
-'use strict';
+// 'use strict';
 
 define(['app'], function (app) {
 
 	app.config(['$routeProvider', ($routeProvider) => {
-		$routeProvider.when('/sellers', {
-			templateUrl: '../partial/cms/cms-list.html',
-			controller: 'CmsListCtrl'
-		}).when('/members', {
-			templateUrl: '../partial/cms/cms-member-list.html',
-			controller: 'CmsMemberListCtrl'
+		$routeProvider.when('/trading', {
+			templateUrl: '../partial/trading/trading.html',
+			controller: 'TradingCtrl'
+		}).when('/profiles', {
+			templateUrl: '../partial/account/profile.html',
+			controller: 'ProfileCtrl'
 		}).otherwise({
-			redirectTo: '/sellers'
+			redirectTo: '/trading'
 		});
 	}]);
 });

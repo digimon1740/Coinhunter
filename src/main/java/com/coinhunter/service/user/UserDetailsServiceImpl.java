@@ -3,8 +3,10 @@ package com.coinhunter.service.user;
 import com.coinhunter.exception.AccessDeniedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +25,28 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	public UserDetailsServiceImpl(UserService userService) {
 		this.userService = userService;
+	}
+
+	public Authentication getAuthenticationByLoginUser() {
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+
+	public boolean isAuthenticated() {
+		Authentication authentication = getAuthenticationByLoginUser();
+		if (authentication == null) {
+			return false;
+		}
+		return authentication.isAuthenticated();
+	}
+
+	public String getUsername() {
+		Authentication auth = getAuthenticationByLoginUser();
+		return ((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername();
+	}
+
+	public long getUserId() {
+		com.coinhunter.domain.user.User user = userService.findByName(getUsername());
+		return user.getId();
 	}
 
 	@Override

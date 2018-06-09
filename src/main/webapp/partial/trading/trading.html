@@ -1,0 +1,589 @@
+<!-- START Sub-Navbar with Header only-->
+<div class="sub-navbar sub-navbar__header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-header m-t-0">
+					<h3 class="m-t-0">Exchange &amp; Trading</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END Sub-Navbar with Header only-->
+
+<!-- START Sub-Navbar with Header and Breadcrumbs-->
+<div class="sub-navbar sub-navbar__header-breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 sub-navbar-column">
+				<div class="sub-navbar-header">
+					<h3>거래소</h3>
+				</div>
+				<ol class="breadcrumb navbar-text navbar-right no-bg">
+					<li class="current-parent">
+						<a class="current-parent" href="../index.html">
+							<i class="fa fa-fw fa-home"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Start
+						</a>
+					</li>
+					<li class="active">Exchange &amp; Trading</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END Sub-Navbar with Header and Breadcrumbs-->
+
+<div class="container">
+
+	<!-- START EDIT CONTENT -->
+	<div class="row">
+		<div class="col-lg-12 m-t-2">
+
+			<div class="row m-b-0">
+
+				<div class="col-lg-2 col-md-2 col-xs-5 col-sm-4 m-b-0">
+					<div class="hr-text hr-text-left m-t-0 m-b-0">
+						<h6 class="text-white"><strong>Last Price</strong></h6>
+					</div>
+					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">384.96
+						<small>Euro</small>
+					</h1>
+					<h3 class="f-w-300 m-t-0 hidden-lg">384.96
+						<small>Euro</small>
+					</h3>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-xs-7 col-sm-8 m-b-1">
+					<div class="hr-text hr-text-left m-t-0 m-b-0">
+						<h6 class="text-white"><strong>Daily Change</strong></h6>
+					</div>
+					<h1 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">-68.04
+						<small>Euro</small>
+						<small class="text-danger"><i class="fa fa-caret-down"></i> 15.01%</small>
+					</h1>
+					<h3 class="f-w-300 m-t-0 m-b-0 hidden-lg">-68.04
+						<small>Euro</small>
+						<small class="text-danger"><i class="fa fa-caret-down"></i> 15.01%</small>
+					</h3>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 m-b-1">
+					<div class="hr-text hr-text-left m-t-0 m-b-0">
+						<h6 class="text-white"><strong>Daily Range</strong></h6>
+					</div>
+					<h1 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">384.96 - 453.80
+						<small>Euro</small>
+					</h1>
+					<h3 class="f-w-300 m-t-0 m-b-0 hidden-lg">384.96 - 453.80
+						<small>Euro</small>
+					</h3>
+				</div>
+
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 m-b-1">
+					<div class="hr-text hr-text-left m-t-0 m-b-0">
+						<h6 class="text-white"><strong>Today&apos;s Open</strong></h6>
+					</div>
+					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">395.85
+						<small>Euro</small>
+					</h1>
+					<h3 class="f-w-300 m-t-0 hidden-lg">395.85
+						<small>Euro</small>
+					</h3>
+				</div>
+
+				<div class="col-lg-2 col-md-2 col-sm-8 col-xs-7 m-b-1">
+					<div class="hr-text hr-text-left m-t-0 m-b-0">
+						<h6 class="text-white"><strong>24h Volume</strong></h6>
+					</div>
+					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">3098
+						<small>BTC</small>
+					</h1>
+					<h3 class="f-w-300 m-t-0 hidden-lg">3098
+						<small>BTC</small>
+					</h3>
+				</div>
+
+			</div>
+
+			<div class="row m-t-0 m-b-2">
+				<div class="col-lg-4 col-sm-6 col-md-6">
+					<dl class="dl-horizontal">
+						<dt>Market Cap</dt>
+						<dd class="text-white">5,938,345,344.00 Eu9ro</dd>
+					</dl>
+				</div>
+
+				<div class="col-lg-4 col-sm-6 col-md-6">
+					<dl class="dl-horizontal">
+						<dt>Total BTC</dt>
+						<dd class="text-white">15,345,400 BTC</dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="highstock-plot-lines-on-y-axis"></div>
+
+			<div class="panel panel-default m-t-2 b-a-0 bg-gray-darker">
+				<div class="panel-body">
+
+					<form class="form-inline">
+						<div class="form-group">
+							<label class="f-w-300 m-r-1 hidden-md hidden-sm hidden-xs">Buy or Sell BTC</label>
+							<label class="sr-only">Amount (in dollars)</label>
+							<div class="input-group m-r-1 m-b-1">
+								<div class="input-group-addon"><i class="fa fa-fw fa-bitcoin"></i></div>
+								<input type="text" class="form-control" placeholder="0.00">
+								<div class="input-group-addon">Amount BTC</div>
+							</div>
+							<div class="input-group m-r-1 m-b-1">
+								<div class="input-group-addon"><i class="fa fa-fw fa-dollar"></i></div>
+								<input type="text" class="form-control" placeholder="0.00">
+								<div class="input-group-addon">Price USD</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary m-b-1"><i class="fa fa-fw fa-download m-r-1"></i>Buy BTC</button>
+						<button type="submit" class="btn btn-danger m-b-1"><i class="fa fa-fw fa-upload m-r-1"></i>Sell BTC</button>
+					</form>
+
+				</div>
+			</div>
+
+			<!-- START ROW Tables -->
+			<div class="row m-t-3">
+
+				<!-- START Table "Orders to Buy" -->
+				<div class="col-lg-4">
+					<h5><i class="fa fa-fw fa-download text-primary m-r-1"></i> Orders to Buy</h5>
+
+					<div class="table-responsive">
+						<table class="table table-condensed table-hover">
+							<thead>
+							<tr>
+								<th class="small text-muted text-uppercase">
+									<strong>Price</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Btc</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Usd</strong>
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td class="text-white"><span>517.00</span></td>
+								<td class="text-muted">0.<span>209.102.80.247</span></td>
+								<td>120.<span>72635754</span></td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>604.00</span></td>
+								<td class="text-muted">5.<span>102.167.121.99</span></td>
+								<td>92.<span>01603423</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>976.00</span></td>
+								<td class="text-muted">0.<span>9.47.110.73</span></td>
+								<td>120.<span>93591057</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>502.00</span></td>
+								<td class="text-muted">2.<span>114.178.106.60</span></td>
+								<td>39.<span>87591645</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>158.00</span></td>
+								<td class="text-muted">0.<span>140.20.54.48</span></td>
+								<td>120.<span>52424996</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>5.00</span></td>
+								<td class="text-muted">5.<span>195.242.132.159</span></td>
+								<td>92.<span>45326838</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>910.00</span></td>
+								<td class="text-muted">0.<span>89.1.103.190</span></td>
+								<td>120.<span>34483878</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>752.00</span></td>
+								<td class="text-muted">2.<span>193.83.11.156</span></td>
+								<td>39.<span>05712324</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>922.00</span></td>
+								<td class="text-muted">0.<span>174.200.211.134</span></td>
+								<td>120.<span>99993738</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>136.00</span></td>
+								<td class="text-muted">5.<span>141.146.246.155</span></td>
+								<td>92.<span>63212844</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>418.00</span></td>
+								<td class="text-muted">0.<span>2.91.73.111</span></td>
+								<td>120.<span>97595151</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>125.00</span></td>
+								<td class="text-muted">2.<span>116.177.73.86</span></td>
+								<td>39.<span>18721493</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>917.00</span></td>
+								<td class="text-muted">0.<span>189.117.23.19</span></td>
+								<td>120.<span>46093019</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>95.00</span></td>
+								<td class="text-muted">5.<span>25.119.22.56</span></td>
+								<td>92.<span>88563567</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>797.00</span></td>
+								<td class="text-muted">0.<span>34.195.162.58</span></td>
+								<td>120.<span>33452618</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>378.00</span></td>
+								<td class="text-muted">2.<span>17.68.236.81</span></td>
+								<td>39.<span>34163283</span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<!-- END Table "Orders to Buy" -->
+
+				<!-- START Table "Orders to Sell" -->
+				<div class="col-lg-4">
+					<h5><i class="fa fa-fw fa-upload text-danger m-r-1"></i> Orders to Sell</h5>
+
+					<div class="table-responsive">
+						<table class="table table-condensed table-hover">
+							<thead>
+							<tr>
+								<th class="small text-muted text-uppercase">
+									<strong>Price</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Btc</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Usd</strong>
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td class="text-white"><span>495.00</span></td>
+								<td class="text-muted">0.<span>221.103.164.56</span></td>
+								<td>120.<span>22006572</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>731.00</span></td>
+								<td class="text-muted">5.<span>248.66.243.35</span></td>
+								<td>92.<span>84932261</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>485.00</span></td>
+								<td class="text-muted">0.<span>164.126.20.6</span></td>
+								<td>120.<span>40796441</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>262.00</span></td>
+								<td class="text-muted">2.<span>168.187.231.155</span></td>
+								<td>39.<span>27239170</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>78.00</span></td>
+								<td class="text-muted">0.<span>93.194.246.180</span></td>
+								<td>120.<span>22090062</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>293.00</span></td>
+								<td class="text-muted">5.<span>98.160.11.217</span></td>
+								<td>92.<span>77117645</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>500.00</span></td>
+								<td class="text-muted">0.<span>141.202.152.136</span></td>
+								<td>120.<span>73041943</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>464.00</span></td>
+								<td class="text-muted">2.<span>140.201.99.177</span></td>
+								<td>39.<span>57908969</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>419.00</span></td>
+								<td class="text-muted">0.<span>184.229.83.185</span></td>
+								<td>120.<span>64331655</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>614.00</span></td>
+								<td class="text-muted">5.<span>26.98.70.78</span></td>
+								<td>92.<span>53086850</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>257.00</span></td>
+								<td class="text-muted">0.<span>27.55.37.245</span></td>
+								<td>120.<span>82470573</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>477.00</span></td>
+								<td class="text-muted">2.<span>56.78.22.165</span></td>
+								<td>39.<span>02750536</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>411.00</span></td>
+								<td class="text-muted">0.<span>93.140.190.156</span></td>
+								<td>120.<span>10188151</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>77.00</span></td>
+								<td class="text-muted">5.<span>130.106.164.146</span></td>
+								<td>92.<span>46816176</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>690.00</span></td>
+								<td class="text-muted">0.<span>44.253.68.248</span></td>
+								<td>120.<span>77352234</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-white"><span>520.00</span></td>
+								<td class="text-muted">2.<span>105.96.110.194</span></td>
+								<td>39.<span>70772058</span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<!-- END Table "Orders to Sell" -->
+
+				<!-- START Table "All Transcations" -->
+				<div class="col-lg-4">
+					<h5><i class="fa fa-fw fa-bars text-gray-lighter m-r-1"></i> All Transactions</h5>
+
+					<div class="table-responsive">
+						<table class="table table-condensed table-hover">
+							<thead>
+							<tr>
+								<th class="small text-muted text-uppercase">
+									<strong>Time</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Price</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Btc</strong>
+								</th>
+								<th class="small text-muted text-uppercase">
+									<strong>Usd</strong>
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>01:52</span></td>
+								<td class="text-white"><span>299.00</span></td>
+								<td class="text-muted">0.<span>0.4.1.114</span></td>
+								<td>120.<span>61215280</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>11:15</span></td>
+								<td class="text-white"><span>975.00</span></td>
+								<td class="text-muted">0.<span>191.86.226.153</span></td>
+								<td>120.<span>64132141</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>06:42</span></td>
+								<td class="text-white"><span>265.00</span></td>
+								<td class="text-muted">0.<span>113.35.40.43</span></td>
+								<td>120.<span>95923586</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>06:41</span></td>
+								<td class="text-white"><span>801.00</span></td>
+								<td class="text-muted">0.<span>244.123.3.42</span></td>
+								<td>120.<span>05563415</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>10:57</span></td>
+								<td class="text-white"><span>907.00</span></td>
+								<td class="text-muted">0.<span>200.24.125.28</span></td>
+								<td>120.<span>58505665</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>10:14</span></td>
+								<td class="text-white"><span>236.00</span></td>
+								<td class="text-muted">0.<span>123.102.194.225</span></td>
+								<td>120.<span>06392704</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>09:21</span></td>
+								<td class="text-white"><span>753.00</span></td>
+								<td class="text-muted">0.<span>206.125.101.185</span></td>
+								<td>120.<span>56041118</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>07:10</span></td>
+								<td class="text-white"><span>621.00</span></td>
+								<td class="text-muted">0.<span>116.140.71.209</span></td>
+								<td>120.<span>99858752</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>10:49</span></td>
+								<td class="text-white"><span>53.00</span></td>
+								<td class="text-muted">0.<span>186.59.27.136</span></td>
+								<td>120.<span>63565991</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>07:52</span></td>
+								<td class="text-white"><span>260.00</span></td>
+								<td class="text-muted">0.<span>90.157.137.224</span></td>
+								<td>120.<span>20050544</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>01:16</span></td>
+								<td class="text-white"><span>158.00</span></td>
+								<td class="text-muted">0.<span>17.153.109.82</span></td>
+								<td>120.<span>18061103</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>06:09</span></td>
+								<td class="text-white"><span>20.00</span></td>
+								<td class="text-muted">0.<span>101.187.124.27</span></td>
+								<td>120.<span>33609660</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-up text-danger"></i> <span>11:25</span></td>
+								<td class="text-white"><span>910.00</span></td>
+								<td class="text-muted">0.<span>199.127.40.169</span></td>
+								<td>120.<span>04927642</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>08:45</span></td>
+								<td class="text-white"><span>310.00</span></td>
+								<td class="text-muted">0.<span>173.194.53.181</span></td>
+								<td>120.<span>39169391</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>12:42</span></td>
+								<td class="text-white"><span>607.00</span></td>
+								<td class="text-muted">0.<span>154.153.49.205</span></td>
+								<td>120.<span>67608089</span>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-fw fa-caret-down text-primary"></i> <span>11:43</span></td>
+								<td class="text-white"><span>55.00</span></td>
+								<td class="text-muted">0.<span>247.185.113.251</span></td>
+								<td>120.<span>82320413</span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<!-- END Table "Orders to Sell" -->
+
+			</div>
+			<!-- END ROW Tables -->
+
+			<hr>
+
+			<div class="row m-t-3">
+				<div class="col-md-4">
+					<h3 class="m-t-0 f-w-300">Latest News</h3></div>
+				<div class="col-md-4 col-md-offset-4 text-right">
+					<button type="submit" class="btn btn-default btn-sm">All News <i class="fa fa-fw fa-angle-right"></i></button>
+				</div>
+			</div>
+
+			<div class="row m-b-3">
+				<div class="col-lg-4">
+					<small><span>09-October-2016</span></small>
+					<br>
+					<h5 class="m-t-0"><a href="#" class="text-white"><span>Et iste facere inventore dolorum quidem nobis.</span></a></h5>
+					<p><span>Fuga possimus nulla. Repellat ad nihil est neque accusamus enim velit. Doloremque expedita dolores quia incidunt dolor. Quasi dolorem sint fuga.</span>
+					</p>
+				</div>
+				<div class="col-lg-4">
+					<small><span>28-November-2016</span></small>
+					<br>
+					<h5 class="m-t-0"><a href="#" class="text-white"><span>Quos consequuntur natus.</span></a></h5>
+					<p><span>Amet tempora tempore dicta illum rerum. Ut rerum accusamus explicabo repellendus in omnis nihil. Id sint dolores aut sapiente nulla asperiores in adipisci.</span>
+					</p>
+				</div>
+				<div class="col-lg-4">
+					<small><span>23-July-2016</span></small>
+					<br>
+					<h5 class="m-t-0"><a href="#" class="text-white"><span>Ipsum rerum dolores asperiores iure.</span></a></h5>
+					<p><span>Sapiente quis sed. Soluta repudiandae voluptatem quasi. Officiis dolorem ut vero. Voluptatem et doloribus eveniet voluptatem at suscipit consectetur.</span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- END EDIT CONTENT -->
+
+</div>
+

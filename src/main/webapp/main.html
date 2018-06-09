@@ -9,64 +9,7 @@
 		코인헌터 | 자동 트레이딩 시스템
 	</title>
 	<!--START Loader -->
-	<style>
-		#initial-loader {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-wrap: wrap;
-			width: 100%;
-			background: #212121;
-			position: fixed;
-			z-index: 10000;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			transition: opacity .2s ease-out
-		}
-
-		#initial-loader .initial-loader-top {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			width: 200px;
-			border-bottom: 1px solid #2d2d2d;
-			padding-bottom: 5px
-		}
-
-		#initial-loader .initial-loader-top > * {
-			display: block;
-			flex-shrink: 0;
-			flex-grow: 0
-		}
-
-		#initial-loader .initial-loader-bottom {
-			padding-top: 10px;
-			color: #5C5C5C;
-			font-family: -apple-system, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
-			font-size: 12px
-		}
-
-		@keyframes spin {
-			100% {
-				transform: rotate(360deg)
-			}
-		}
-
-		#initial-loader .loader g {
-			transform-origin: 50% 50%;
-			animation: spin .5s linear infinite
-		}
-
-		body.loading {
-			overflow: hidden !important
-		}
-
-		body.loaded #initial-loader {
-			opacity: 0
-		}
-	</style>
+	<link rel="stylesheet" href="css/default.css">
 	<!--END Loader-->
 	<!-- SCSS Output -->
 	<!-- build:css assets/stylesheets/app.min.css -->
@@ -97,6 +40,8 @@
 	<link rel="stylesheet" href="assets/vendor/css/lib.min.css">
 	<!-- JS -->
 	<script src="assets/vendor/js/lib.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script data-main="app/main" src="js/lib/require-2.1.15.min.js"></script>
 </head>
 <!-- END Head -->
@@ -118,8 +63,9 @@
 		<!-- END Sidebars -->
 	</nav>
 
-	<div class="content">
-		<ng-include src="'partial/layout/content.html'" ng-controller="InitCtrl"></ng-include>
+	<!-- content layout -->
+	<div ng-view id="content-view" class="content">
+		<!-- content template area -->
 	</div>
 
 	<!-- START Footer -->
