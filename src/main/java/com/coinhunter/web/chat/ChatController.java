@@ -1,6 +1,6 @@
 package com.coinhunter.web.chat;
 
-import com.coinhunter.domain.chat.ChatMessage;
+import com.coinhunter.core.domain.chat.ChatMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;

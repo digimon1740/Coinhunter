@@ -1,8 +1,8 @@
 package com.coinhunter.web.listener;
 
-import com.coinhunter.domain.chat.ChatMessage;
-import com.coinhunter.domain.user.User;
-import com.coinhunter.service.user.UserService;
+import com.coinhunter.core.domain.chat.ChatMessage;
+import com.coinhunter.core.domain.user.User;
+import com.coinhunter.core.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;

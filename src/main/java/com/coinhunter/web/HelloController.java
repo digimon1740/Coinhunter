@@ -1,6 +1,6 @@
 package com.coinhunter.web;
 
-import com.coinhunter.service.MessageSourceService;
+import com.coinhunter.core.service.MessageSourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

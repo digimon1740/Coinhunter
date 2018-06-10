@@ -2,33 +2,55 @@
 
 define(function () {
 
-	function controller($rootScope, $scope, $routeParams, UserService, $stomp) {
+	function controller($scope, $routeParams, $stomp, UserService, TradingService) {
 
-		//$scope.myres = [];
-
+		$scope.exchange = 'BITHUMB'.toLowerCase();
 		$scope.cryptoCurrency = 'BTC';
 
-		UserService.get({}, (data) => {
-			$scope.user = data;
+		$scope.ticker = {};
 
-			// TODO stomp 가 사용가능일경우에 웹소켓 연결
-			// TODO 아닌경우라면 settimeout 으로 새로고침 해야할듯
+		(() => {
+			connectTickerApiByRest();
+
+			if ($stomp && $stomp.connect) {
+				connectTickerApiByWebsocket();
+			} else {
+				// 웹소켓 지원안될경우
+				connectTickerApiByRest();
+			}
+		})();
+
+		function connectTickerApiByWebsocket() {
 			$stomp.connect('http://localhost:8080/ws', {})
 				.then(function (frame) {
-					var param = {id: $scope.user.id, cryptoCurrency: $scope.cryptoCurrency};
-					let subscription = $stomp.subscribe('/topic/trading/ticker/' + $scope.user.id,
-						function (payload, headers, res) {
-							console.log(payload);
-							$stomp.send('/app/trading.ticker/' + $scope.user.id, param);
+					let subscriptionTopic = `/topic/trading/ticker/${$scope.exchange}`;
+					let sendingTopic = `/app/trading.ticker/${$scope.exchange}`;
+					let param = {cryptoCurrency: $scope.cryptoCurrency};
+
+					$stomp.subscribe(subscriptionTopic,
+						(payload, headers, res) => {
+							if (payload && payload.status === "0000") {
+								$scope.ticker = payload;
+								$scope.$apply($scope.ticker);
+							}
+							$stomp.send(sendingTopic, param);
 						});
-					$stomp.send('/app/trading.ticker/' + $scope.user.id, param);
+					$stomp.send(sendingTopic, param);
 				});
+		}
 
-		});
-
+		function connectTickerApiByRest() {
+			TradingService.bithumbTicker.get({
+				cryptoCurrency: $scope.cryptoCurrency,
+			}, (ticker) => {
+				if (ticker && ticker.status === "0000") {
+					$scope.ticker = ticker;
+				}
+			});
+		}
 	}
 
-	controller.$inject = ['$rootScope', '$scope', '$routeParams', 'UserService', '$stomp'];
+	controller.$inject = ['$scope', '$routeParams', '$stomp', 'UserService', 'TradingService'];
 	return controller;
 
 });

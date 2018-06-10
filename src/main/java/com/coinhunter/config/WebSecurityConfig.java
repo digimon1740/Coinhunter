@@ -1,6 +1,6 @@
 package com.coinhunter.config;
 
-import com.coinhunter.service.user.UserDetailsServiceImpl;
+import com.coinhunter.core.service.user.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

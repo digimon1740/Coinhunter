@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Import(BaseConfig.class)
 @Configuration
 @Profile("live")
-@EnableJpaRepositories(basePackages = "com.coinhunter.repository")
+@EnableJpaRepositories(basePackages = "com.coinhunter.core.repository")
 public class AppConfig {
 }

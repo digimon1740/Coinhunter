@@ -1,9 +1,9 @@
 package com.coinhunter.web.trading.api;
 
-import com.coinhunter.domain.bithumb.BithumbTicker;
-import com.coinhunter.domain.value.CryptoCurrency;
-import com.coinhunter.service.bithumb.BithumbApiService;
-import com.coinhunter.service.user.UserDetailsServiceImpl;
+import com.coinhunter.core.domain.bithumb.BithumbTicker;
+import com.coinhunter.core.domain.value.CryptoCurrency;
+import com.coinhunter.core.service.bithumb.BithumbApiService;
+import com.coinhunter.core.service.user.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -29,12 +29,8 @@ public class TradingRestController {
 		this.bithumbApiService = bithumbApiService;
 	}
 
-	@GetMapping("/ticker/{cryptoCurrency}")
+	@GetMapping("/bithumb/ticker/{cryptoCurrency}")
 	public BithumbTicker ticker(@PathVariable("cryptoCurrency") String cryptoCurrency) {
-		long userId = userDetailsService.getUserId();
-		BithumbTicker bithumbTicker = bithumbApiService.getTickerByCryptoCurrency(userId, CryptoCurrency.of(cryptoCurrency));
-		// TODO 테스트 후 userId 제거 필요
-		bithumbTicker.setUserId(userId);
-		return bithumbTicker;
+		return bithumbApiService.getTickerByCryptoCurrency(CryptoCurrency.of(cryptoCurrency));
 	}
 }

@@ -1,10 +1,10 @@
 package com.coinhunter.web.user;
 
-import com.coinhunter.dto.user.UserDto;
-import com.coinhunter.domain.user.User;
-import com.coinhunter.service.MessageSourceService;
-import com.coinhunter.service.user.UserDetailsServiceImpl;
-import com.coinhunter.service.user.UserService;
+import com.coinhunter.core.dto.user.UserDto;
+import com.coinhunter.core.domain.user.User;
+import com.coinhunter.core.service.MessageSourceService;
+import com.coinhunter.core.service.user.UserDetailsServiceImpl;
+import com.coinhunter.core.service.user.UserService;
 import com.coinhunter.utils.mapper.ModelMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

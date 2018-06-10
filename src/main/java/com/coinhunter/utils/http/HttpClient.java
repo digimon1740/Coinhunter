@@ -2,13 +2,11 @@ package com.coinhunter.utils.http;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
 @Slf4j
-@Component
 public class HttpClient {
 
 	private RestTemplate rest;
@@ -31,6 +29,13 @@ public class HttpClient {
 
 	public String get(String uri) {
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
+		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+		this.setStatus(responseEntity.getStatusCode());
+		return responseEntity.getBody();
+	}
+
+	public String get(String uri, String params) {
+		HttpEntity<String> requestEntity = new HttpEntity<String>(params, headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
 		this.setStatus(responseEntity.getStatusCode());
 		return responseEntity.getBody();

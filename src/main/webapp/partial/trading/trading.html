@@ -49,13 +49,15 @@
 
 				<div class="col-lg-2 col-md-2 col-xs-5 col-sm-4 m-b-0">
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
-						<h6 class="text-white"><strong>Last Price</strong></h6>
+						<h6 class="text-white"><strong>최종가</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">384.96
-						<small>Euro</small>
+					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
+						{{ticker.data.closing_price | number:0}}
+						<small>KRW</small>
 					</h1>
-					<h3 class="f-w-300 m-t-0 hidden-lg">384.96
-						<small>Euro</small>
+					<h3 class="f-w-300 m-t-0 hidden-lg">
+						{{ticker.data.closing_price | number:0}}
+						<small>KRW</small>
 					</h3>
 				</div>
 

@@ -1,11 +1,12 @@
 package com.coinhunter.web.trading.websocket;
 
-import com.coinhunter.domain.bithumb.BithumbApiPayload;
-import com.coinhunter.domain.bithumb.BithumbTicker;
-import com.coinhunter.service.bithumb.BithumbApiService;
-import com.coinhunter.service.user.UserDetailsServiceImpl;
+import com.coinhunter.core.domain.bithumb.BithumbApiPayload;
+import com.coinhunter.core.domain.bithumb.BithumbTicker;
+import com.coinhunter.core.service.bithumb.BithumbApiService;
+import com.coinhunter.core.service.user.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -23,6 +24,9 @@ public class TradingWebsocketController {
 
 	private SimpMessagingTemplate template;
 
+	@Value("${websocket.ticker.send.delay}")
+	private long tickerSendDelay;
+
 	@Autowired
 	public TradingWebsocketController(
 		UserDetailsServiceImpl userDetailsService,
@@ -33,14 +37,18 @@ public class TradingWebsocketController {
 		this.template = template;
 	}
 
-	@MessageMapping("/trading.ticker/{userId}")
-	@SendTo("/topic/trading/ticker/{userId}")
-	public BithumbTicker ticker(@DestinationVariable long userId, @Payload BithumbApiPayload bithumbApiPayload) throws Exception {
-		Thread.sleep(10000); // simulated delay
-		BithumbTicker bithumbTicker = bithumbApiService.getTickerByCryptoCurrency(userId, bithumbApiPayload.getCryptoCurrency());
-		// TODO 테스트 후 userId 제거 필요
-		bithumbTicker.setUserId(bithumbApiPayload.getId());
-		return bithumbTicker;
+	@MessageMapping("/trading.ticker/bithumb")
+	@SendTo("/topic/trading/ticker/bithumb")
+	public BithumbTicker ticker(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
+		Thread.sleep(tickerSendDelay);
+		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
 	}
+
+//	@MessageMapping("/trading.ticker/bithumb/{userId}")
+//	@SendTo("/topic/trading/ticker/bithumb/{userId}")
+//	public BithumbTicker ticker(@DestinationVariable long userId, @Payload BithumbApiPayload bithumbApiPayload) throws Exception {
+//		Thread.sleep(tickerSendDelay);
+//		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
+//	}
 
 }

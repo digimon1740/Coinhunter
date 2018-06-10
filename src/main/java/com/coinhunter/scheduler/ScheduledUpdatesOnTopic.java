@@ -1,6 +1,6 @@
 package com.coinhunter.scheduler;
 
-import com.coinhunter.domain.bithumb.BithumbTicker;
+import com.coinhunter.core.domain.bithumb.BithumbTicker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
