@@ -39,7 +39,7 @@ public class TradingWebsocketController {
 
 	@MessageMapping("/trading.ticker/bithumb")
 	@SendTo("/topic/trading/ticker/bithumb")
-	public BithumbTicker ticker(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
+	public BithumbTicker sendTicker(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
 		Thread.sleep(tickerSendDelay);
 		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
 	}

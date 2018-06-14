@@ -54,3 +54,8 @@ body.loading {
 body.loaded #initial-loader {
 	opacity: 0
 }
+
+#chart-container {
+	width: 100%;
+	height: 400px;
+}

@@ -1,8 +1,8 @@
 package com.coinhunter.web.user;
 
-import com.coinhunter.core.dto.user.UserDto;
 import com.coinhunter.core.domain.user.User;
-import com.coinhunter.core.service.MessageSourceService;
+import com.coinhunter.core.dto.user.UserDto;
+import com.coinhunter.core.service.message.MessageSourceService;
 import com.coinhunter.core.service.user.UserDetailsServiceImpl;
 import com.coinhunter.core.service.user.UserService;
 import com.coinhunter.utils.mapper.ModelMapperUtils;
@@ -45,7 +45,7 @@ public class UserController {
 		return userDto;
 	}
 
-	@PostMapping(value = "/reset-password")
+	@PutMapping(value = "/reset-password")
 	String resetPassword(@RequestParam("name") String name, @RequestParam("email") String email) {
 		return userService.resetPassword(name, email);
 	}

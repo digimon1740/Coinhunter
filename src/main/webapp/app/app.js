@@ -18,7 +18,6 @@ define(['angular', 'i18n!i18n-nls/app/nls/app-i18n', 'controllers/controllers', 
 				"assets/javascript/app/main.js",
 				"assets/vendor/js/highstock.min.js",
 				"assets/javascript/highchart-themes/highcharts&highstock-theme.js",
-				"assets/javascript/highchart-themes/highstock-settings.js",
 			];
 
 			layoutScripts.forEach((layoutScript) => {

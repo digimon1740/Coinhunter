@@ -9,6 +9,11 @@ define(['angular'], function (angular) {
 					isArray: false,
 				},
 			}),
+			bithumbChart : $resource('/trading/bithumb/chart', {}, {
+				list: {
+					isArray: false,
+				},
+			})
 		}
 	};
 

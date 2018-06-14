@@ -13,7 +13,6 @@ require.config({
 		'angular.stomp': '/js/lib/ng-stomp.standalone.min',
 		'objectUtils': '/js/assets/objectUtils',
 		'dynamicFilter': '/js/assets/dynamicFilter',
-		'moment': '/js/lib/moment.min',
 	},
 	shim: {
 		'angular': {
@@ -45,7 +44,7 @@ require.config({
 
 const importDependencies = ['angular', 'underscore', 'app', 'routes',
 	'angular.route', 'angular.resource',
-	'angular.ui.bootstrap', 'angular.InfiniteScroll', 'angular.stomp', 'dynamicFilter', 'moment'];
+	'angular.ui.bootstrap', 'angular.InfiniteScroll', 'angular.stomp', 'dynamicFilter',];
 
 require(importDependencies, (angular, _,) => {
 

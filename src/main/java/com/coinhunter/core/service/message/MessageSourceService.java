@@ -1,4 +1,4 @@
-package com.coinhunter.core.service;
+package com.coinhunter.core.service.message;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

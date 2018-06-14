@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		this.userService = userService;
 	}
 
-	public Authentication getAuthenticationByLoginUser() {
+	private Authentication getAuthenticationByLoginUser() {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 
