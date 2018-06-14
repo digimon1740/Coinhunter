@@ -2,11 +2,13 @@ package com.coinhunter.core.service.bithumb;
 
 import com.coinhunter.client.bithumb.BithumbApiClient;
 import com.coinhunter.core.domain.bithumb.BithumbApiDetails;
-import com.coinhunter.core.domain.bithumb.BithumbChart;
-import com.coinhunter.core.domain.bithumb.BithumbTicker;
+import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
+import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
+import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
 import com.coinhunter.core.domain.user.ApiKey;
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import com.coinhunter.core.service.api.ApiKeyService;
+import com.coinhunter.core.service.message.MessageSourceService;
 import com.coinhunter.utils.bithumb.BithumbClientUtils;
 import com.coinhunter.utils.config.JsonConfig;
 import com.coinhunter.utils.http.HttpClient;
@@ -14,6 +16,7 @@ import com.coinhunter.utils.jackson.JacksonJsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.Collections;
 import java.util.Map;
@@ -24,6 +27,8 @@ public class BithumbApiService {
 
 	private ApiKeyService apiKeyService;
 
+	private MessageSourceService messageSourceService;
+
 	private JsonConfig jsonConfig;
 
 	private JacksonJsonUtils jacksonJsonUtils;
@@ -32,9 +37,11 @@ public class BithumbApiService {
 
 	@Autowired
 	public BithumbApiService(ApiKeyService apiKeyService,
+	                         MessageSourceService messageSourceService,
 	                         JsonConfig jsonConfig,
 	                         JacksonJsonUtils jacksonJsonUtils) {
 		this.apiKeyService = apiKeyService;
+		this.messageSourceService = messageSourceService;
 		this.jsonConfig = jsonConfig;
 		this.jacksonJsonUtils = jacksonJsonUtils;
 		this.bithumbApiDetails = jsonConfig.getBithumbApiDetails();
@@ -84,5 +91,26 @@ public class BithumbApiService {
 			log.info(e.getMessage(), e);
 		}
 		return new BithumbChart(false, cryptoCurrency, null);
+	}
+
+	public BithumbBalance getBalanceByUserId(long userId) {
+		ApiKey apiKey = apiKeyService.findByUserId(userId);
+		Assert.notNull(apiKey, messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getAccessKey(), messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getSecretKey(), messageSourceService.getMessage("apikey.not.registered"));
+
+
+
+		String apiUrl = bithumbApiDetails.getBaseUrl() + bithumbApiDetails.getBalance();
+
+		try {
+			String result = fetchResultFromPublicApi(apiUrl, null);
+			BithumbBalance bithumbBalance = jacksonJsonUtils.readValue(result, BithumbBalance.class);
+			return bithumbBalance;
+		} catch (Exception e) {
+			log.info(e.getMessage(), e);
+		}
+		return null;
+		//return new BithumbBalance("5900", Collections.emptyMap());
 	}
 }

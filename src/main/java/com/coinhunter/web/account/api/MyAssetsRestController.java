@@ -1,4 +1,4 @@
-package com.coinhunter.web.trading.api;
+package com.coinhunter.web.account.api;
 
 import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/trading")
-public class TradingRestController {
+@RequestMapping("/my-assets")
+public class MyAssetsRestController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
 	private BithumbApiService bithumbApiService;
 
 	@Autowired
-	public TradingRestController(
+	public MyAssetsRestController(
 		UserDetailsServiceImpl userDetailsService,
 		BithumbApiService bithumbApiService) {
 		this.userDetailsService = userDetailsService;

@@ -12,7 +12,11 @@ define(function (require) {
 	controllers.controller('TradingCtrl', require('controllers/trading/trading.controller'));
 
 	// Account
+	controllers.controller('MyAssetsCtrl', require('controllers/account/my.assets.controller'));
 	controllers.controller('ProfileCtrl', require('controllers/account/profile.controller'));
+
+	// Widget
+	controllers.controller('ChatCtrl', require('controllers/widget/chat.controller'));
 
 	controllers.run(['$rootScope', function ($rootScope) {
 		$rootScope.sampleParam = "value";

@@ -1,5 +1,6 @@
 package com.coinhunter.core.domain.user;
 
+import com.coinhunter.core.domain.converter.PBECipherConverter;
 import com.coinhunter.core.domain.value.Exchange;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,10 +40,12 @@ public class ApiKey {
 
 	@NotNull
 	@Column(name = "access_key")
+	@Convert(converter = PBECipherConverter.class)
 	private String accessKey;
 
 	@NotNull
 	@Column(name = "secret_key")
+	@Convert(converter = PBECipherConverter.class)
 	private String secretKey;
 
 	@Column(name = "last_modified_time")

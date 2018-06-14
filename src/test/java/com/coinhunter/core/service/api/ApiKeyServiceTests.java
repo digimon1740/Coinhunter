@@ -26,6 +26,5 @@ public class ApiKeyServiceTests {
 		ApiKey apiKey = apiKeyService.findByUserId(1);
 		Assert.assertNotNull(apiKey);
 		log.info("apiKey : {}", apiKey);
-
 	}
 }

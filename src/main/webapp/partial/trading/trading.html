@@ -76,10 +76,10 @@
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
 						<h6 class="text-white"><strong>최종 거래가</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
+					<h2 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
 						{{ticker.data.closing_price | number:0}}
 						<small>KRW</small>
-					</h1>
+					</h2>
 					<h3 class="f-w-300 m-t-0 hidden-lg">
 						{{ticker.data.closing_price | number:0}}
 						<small>KRW</small>
@@ -90,13 +90,13 @@
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
 						<h6 class="text-white"><strong>변동률(24시간)</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">
+					<h2 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">
 						{{ticker.data['24H_fluctate'] | number:0}}
 						<small>KRW</small>
 						<small class="text-danger"><i class="fa fa-caret-down"></i>
 							{{ticker.data['24H_fluctate_rate']}}%
 						</small>
-					</h1>
+					</h2>
 					<h3 class="f-w-300 m-t-0 m-b-0 hidden-lg">
 						{{ticker.data['24H_fluctate'] | number:0}}
 						<small>KRW</small>
@@ -110,10 +110,10 @@
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
 						<h6 class="text-white"><strong>일간 최저 & 최고 거래가</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">
+					<h2 class="f-w-300 m-t-0 m-b-0 hidden-md hidden-sm hidden-xs">
 						{{ticker.data.min_price | number:0}} - {{ticker.data.max_price | number:0}}
 						<small>KRW</small>
-					</h1>
+					</h2>
 					<h3 class="f-w-300 m-t-0 m-b-0 hidden-lg">
 						{{ticker.data.min_price | number:0}} - {{ticker.data.max_price | number:0}}
 						<small>KRW</small>
@@ -124,10 +124,10 @@
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
 						<h6 class="text-white"><strong>시작가(24시간)</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
+					<h2 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
 						{{ticker.data.opening_price | number:0}}
 						<small>KRW</small>
-					</h1>
+					</h2>
 					<h3 class="f-w-300 m-t-0 hidden-lg">
 						{{ticker.data.opening_price | number:0}}
 						<small>KRW</small>
@@ -138,32 +138,16 @@
 					<div class="hr-text hr-text-left m-t-0 m-b-0">
 						<h6 class="text-white"><strong>일간 총거래</strong></h6>
 					</div>
-					<h1 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
+					<h2 class="f-w-300 m-t-0 hidden-md hidden-sm hidden-xs">
 						{{toFixed(ticker.data.volume_1day, 4)}}
 						<small>{{cryptoCurrency}}</small>
-					</h1>
+					</h2>
 					<h3 class="f-w-300 m-t-0 hidden-lg">
 						{{toFixed(ticker.data.volume_1day, 4)}}
 						<small>{{cryptoCurrency}}</small>
 					</h3>
 				</div>
 			</div>
-
-			<!--<div class="row m-t-0 m-b-2">-->
-				<!--<div class="col-lg-4 col-sm-6 col-md-6">-->
-					<!--<dl class="dl-horizontal">-->
-						<!--<dt>Market Cap</dt>-->
-						<!--<dd class="text-white">5,938,345,344.00 Eu9ro</dd>-->
-					<!--</dl>-->
-				<!--</div>-->
-
-				<!--<div class="col-lg-4 col-sm-6 col-md-6">-->
-					<!--<dl class="dl-horizontal">-->
-						<!--<dt>Total {{cryptoCurrency}}</dt>-->
-						<!--<dd class="text-white">15,345,400 {{cryptoCurrency}}</dd>-->
-					<!--</dl>-->
-				<!--</div>-->
-			<!--</div>-->
 
 			<div id="chart-container"></div>
 			<!--<div id="chart-container"></div>-->

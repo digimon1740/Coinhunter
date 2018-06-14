@@ -1,46 +1,39 @@
-package com.coinhunter.web.trading.websocket;
+package com.coinhunter.web.account.websocket;
 
-import com.coinhunter.core.domain.bithumb.BithumbApiPayload;
-import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
+import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
 import com.coinhunter.core.service.bithumb.BithumbApiService;
 import com.coinhunter.core.service.user.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 @Slf4j
 @Controller
-public class TradingWebsocketController {
+public class MyAssetsWebsocketController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
 	private BithumbApiService bithumbApiService;
 
-	private SimpMessagingTemplate template;
-
-	@Value("${websocket.ticker.send.delay}")
-	private long tickerSendDelay;
+	@Value("${websocket.balance.send.delay}")
+	private long balanceSendDelay;
 
 	@Autowired
-	public TradingWebsocketController(
+	public MyAssetsWebsocketController(
 		UserDetailsServiceImpl userDetailsService,
-		BithumbApiService bithumbApiService,
-		SimpMessagingTemplate template) {
+		BithumbApiService bithumbApiService) {
 		this.userDetailsService = userDetailsService;
 		this.bithumbApiService = bithumbApiService;
-		this.template = template;
 	}
 
-	@MessageMapping("/trading.ticker/bithumb")
-	@SendTo("/topic/trading/ticker/bithumb")
-	public BithumbTicker sendTicker(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
-		Thread.sleep(tickerSendDelay);
-		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
+	@MessageMapping("/my.assets/bithumb")
+	@SendTo("/topic/my/assets/bithumb")
+	public BithumbBalance sendMyAssets() throws Exception {
+		Thread.sleep(balanceSendDelay);
+		return bithumbApiService.getBalanceByUserId(userDetailsService.getUserId());
 	}
 
 //	@MessageMapping("/trading.ticker/bithumb/{userId}")

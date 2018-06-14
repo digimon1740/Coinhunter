@@ -1,4 +1,4 @@
-package com.coinhunter.core.domain.bithumb;
+package com.coinhunter.core.domain.bithumb.chart;
 
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import lombok.*;
@@ -7,7 +7,6 @@ import lombok.*;
 @Getter
 @ToString
 @AllArgsConstructor
-@NoArgsConstructor
 public class BithumbChart {
 
 	private boolean success;
@@ -15,4 +14,7 @@ public class BithumbChart {
 	private CryptoCurrency cryptoCurrency;
 
 	public String data;
+
+	private BithumbChart() {
+	}
 }
