@@ -1,4 +1,4 @@
-package com.coinhunter.utils.crypto;
+package com.coinhunter.utils.crypto.pbe;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

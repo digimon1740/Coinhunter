@@ -1,4 +1,4 @@
-package com.coinhunter.utils.crypto;
+package com.coinhunter.utils.crypto.pbe;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 

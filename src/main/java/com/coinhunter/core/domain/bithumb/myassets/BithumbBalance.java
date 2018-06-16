@@ -33,4 +33,20 @@ public class BithumbBalance {
 
 	private BithumbBalance() {
 	}
+
+	public long getTotalKrw() {
+		return MapUtils.getLongValue(data, "total_krw", 0);
+	}
+
+	public long getAvailableKrw() {
+		return MapUtils.getLongValue(data, "available_krw", 0);
+	}
+
+	public long getUsingKrw() {
+		return MapUtils.getLongValue(data, "in_use_krw", 0);
+	}
+
+	public boolean isSuccess() {
+		return "0000".equals(status);
+	}
 }

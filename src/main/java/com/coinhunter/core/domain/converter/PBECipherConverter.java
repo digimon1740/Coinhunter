@@ -1,7 +1,7 @@
 
 package com.coinhunter.core.domain.converter;
 
-import com.coinhunter.utils.crypto.PBECipherUtils;
+import com.coinhunter.utils.crypto.pbe.PBECipherUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -19,7 +19,6 @@ public class PBECipherConverter implements AttributeConverter<String, String> {
 		if (StringUtils.isEmpty(sensitive)) {
 			return null;
 		}
-		log.info("password : {}", PASSWORD);
 		return PBECipherUtils.encryptText(PASSWORD, sensitive);
 	}
 
@@ -28,7 +27,6 @@ public class PBECipherConverter implements AttributeConverter<String, String> {
 		if (StringUtils.isEmpty(sensitive)) {
 			return null;
 		}
-		log.info("password : {}", PASSWORD);
 		return PBECipherUtils.decryptText(PASSWORD, sensitive);
 	}
 }

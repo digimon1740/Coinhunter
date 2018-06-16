@@ -2,6 +2,8 @@ package com.coinhunter.core.service.bithumb;
 
 
 import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
+import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
+import com.coinhunter.core.domain.bithumb.myassets.BithumbMyAssets;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +34,24 @@ public class BithumbApiServiceTests {
 	@Test
 	public void getChartDataTest() {
 		BithumbChart bithumbChart = bithumbApiService.getChartData(CryptoCurrency.EOS, "10M");
+		Assert.assertNotNull(bithumbChart);
+		Assert.assertTrue(bithumbChart.isSuccess());
 		log.info("bithumbChart : {}", bithumbChart);
+	}
+
+	@Test
+	public void getBalanceByUserIdTest() {
+		BithumbBalance bithumbBalance = bithumbApiService.getBalanceByUserId(1, CryptoCurrency.EOS);
+		Assert.assertNotNull(bithumbBalance);
+		log.info("bithumbBalance : {}", bithumbBalance);
+	}
+
+	@Test
+	public void getMyAssetsByUserIdTest() {
+		BithumbMyAssets bithumbMyAssets = bithumbApiService.getMyAssetsByUserId(1);
+		Assert.assertNotNull(bithumbMyAssets);
+		Assert.assertTrue(bithumbMyAssets.isSuccess());
+		log.info("bithumbMyAssets : {}", bithumbMyAssets);
 	}
 
 
