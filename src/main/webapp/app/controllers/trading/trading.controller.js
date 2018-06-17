@@ -2,7 +2,7 @@
 
 define(function () {
 
-	function controller($scope, $routeParams, $stomp, UserService, TradingService, CoinInfoService) {
+	function controller($scope, $routeParams, $stomp, UserService, BithumbService, CoinInfoService) {
 
 		$scope.exchange = 'BITHUMB'.toLowerCase();
 		$scope.cryptoCurrency = 'BTC';
@@ -41,7 +41,6 @@ define(function () {
 					$scope.ticker = payload;
 					$scope.$apply($scope.ticker);
 				}
-
 				let param = {cryptoCurrency: $scope.cryptoCurrency};
 				$stomp.send(sendingTopic, param);
 			};
@@ -59,7 +58,7 @@ define(function () {
 		}
 
 		function connectTickerApiByRest() {
-			TradingService.bithumbTicker.get({
+			BithumbService.ticker.get({
 				cryptoCurrency: $scope.cryptoCurrency,
 			}, (ticker) => {
 				if (ticker && ticker.status === "0000" && $scope.cryptoCurrency === ticker.cryptoCurrency) {
@@ -69,7 +68,7 @@ define(function () {
 		}
 
 		function showChart(cryptoCurrency) {
-			TradingService.bithumbChart.list({
+			BithumbService.chart.list({
 				cryptoCurrency: cryptoCurrency,
 				period: '10M'
 			}, drawChart);
@@ -251,7 +250,7 @@ define(function () {
 	}
 
 
-	controller.$inject = ['$scope', '$routeParams', '$stomp', 'UserService', 'TradingService', 'CoinInfoService'];
+	controller.$inject = ['$scope', '$routeParams', '$stomp', 'UserService', 'BithumbService', 'CoinInfoService'];
 	return controller;
 
 });

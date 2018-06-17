@@ -107,11 +107,16 @@ public class BithumbApiService {
 			String result = fetchResultFromPrivateApi(apiUrl, apiKey, params);
 			BithumbBalance bithumbBalance = jacksonJsonUtils.readValue(result, BithumbBalance.class);
 			bithumbBalance.setCryptoCurrency(cryptoCurrency);
+			bithumbBalance.setDataProperties();
 			return bithumbBalance;
 		} catch (Exception e) {
 			log.info(e.getMessage(), e);
 		}
-		return new BithumbBalance("5900", cryptoCurrency, Collections.emptyMap());
+		return BithumbBalance.builder()
+			.status("5900")
+			.cryptoCurrency(cryptoCurrency)
+			.data(Collections.emptyMap())
+			.build();
 	}
 
 	public BithumbMyAssets getMyAssetsByUserId(long userId) {

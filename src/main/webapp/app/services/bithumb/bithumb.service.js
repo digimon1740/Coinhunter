@@ -4,12 +4,17 @@ define(['angular'], function (angular) {
 
 	let factory = function ($resource) {
 		return {
-			bithumbTicker: $resource('/ticker/bithumb/:cryptoCurrency', {}, {
+			ticker: $resource('/ticker/bithumb/:cryptoCurrency', {}, {
 				get: {
 					isArray: false,
 				},
 			}),
-			bithumbChart : $resource('/chart/bithumb', {}, {
+			chart : $resource('/chart/bithumb', {}, {
+				list: {
+					isArray: false,
+				},
+			}),
+			myAssets : $resource('/my-assets/bithumb', {}, {
 				list: {
 					isArray: false,
 				},

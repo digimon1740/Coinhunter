@@ -32,15 +32,15 @@ public class MyAssetsWebsocketController {
 		this.bithumbApiService = bithumbApiService;
 	}
 
-	@MessageMapping("/my.assets/bithumb")
-	@SendTo("/topic/my/assets/bithumb")
+	@MessageMapping("/my-assets/bithumb")
+	@SendTo("/topic/my-assets/bithumb")
 	public BithumbMyAssets sendMyAssets() throws Exception {
 		Thread.sleep(balanceSendDelay);
 		return bithumbApiService.getMyAssetsByUserId(userDetailsService.getUserId());
 	}
 
-	@MessageMapping("/my.asset/bithumb")
-	@SendTo("/topic/my/asset/bithumb")
+	@MessageMapping("/my-asset/bithumb")
+	@SendTo("/topic/my-asset/bithumb")
 	public BithumbBalance sendMyAsset(@Payload CryptoCurrency cryptoCurrency) throws Exception {
 		Thread.sleep(balanceSendDelay);
 		return bithumbApiService.getBalanceByUserId(userDetailsService.getUserId(), cryptoCurrency);

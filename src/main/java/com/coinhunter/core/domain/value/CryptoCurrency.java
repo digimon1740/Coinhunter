@@ -7,8 +7,8 @@ import java.util.List;
 
 public enum CryptoCurrency {
 
-	BTC, ETH, EOS, TRX, QTUM, GNT, ICX, ETC, MCO, BCH, BTG,
-	LTC, MITH, OMG, XRP, ELF, ZEC, VEN, XMR, DASH, KNC, HSR;
+	BTC, ETH, DASH, LTC, ETC, XRP, BCH, XMR, ZEC, QTUM, BTG, EOS, ICX, VEN, TRX, ELF,
+	MITH, MCO, OMG, KNC, GNT, HSR, ZIL, ETHOS, PAY, WAX, POWR, LRC, GTO, STEEM, STRAT, ZRX, REP, AE, XEM, SNT, ADA;
 
 	public static List<CryptoCurrency> getAllCurrencies() {
 		return CollectionUtils.arrayToList(CryptoCurrency.values());

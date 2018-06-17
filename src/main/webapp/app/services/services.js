@@ -10,7 +10,7 @@ define(function (require) {
 	services.factory('UserService', require('services/user/user.service'));
 
 	//trading
-	services.factory('TradingService', require('services/trading/trading.service'));
+	services.factory('BithumbService', require('services/bithumb/bithumb.service'));
 
 	// info
 	services.factory('CoinInfoService', require('services/info/coin.info.service'));
