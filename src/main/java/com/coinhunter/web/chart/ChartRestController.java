@@ -1,4 +1,4 @@
-package com.coinhunter.web.trading.api;
+package com.coinhunter.web.chart;
 
 import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
@@ -11,27 +11,17 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/trading")
-public class TradingRestController {
-
-	private UserDetailsServiceImpl userDetailsService;
+@RequestMapping("/chart")
+public class ChartRestController {
 
 	private BithumbApiService bithumbApiService;
 
 	@Autowired
-	public TradingRestController(
-		UserDetailsServiceImpl userDetailsService,
-		BithumbApiService bithumbApiService) {
-		this.userDetailsService = userDetailsService;
+	public ChartRestController(BithumbApiService bithumbApiService) {
 		this.bithumbApiService = bithumbApiService;
 	}
 
-	@GetMapping("/bithumb/ticker/{cryptoCurrency}")
-	public BithumbTicker findTicker(@PathVariable("cryptoCurrency") String cryptoCurrency) {
-		return bithumbApiService.getTickerByCryptoCurrency(CryptoCurrency.of(cryptoCurrency));
-	}
-
-	@GetMapping("/bithumb/chart")
+	@GetMapping("/bithumb")
 	public BithumbChart findChart(@RequestParam(name = "cryptoCurrency") String cryptoCurrency,
 	                              @RequestParam(name = "period") String period) {
 		return bithumbApiService.getChartData(CryptoCurrency.of(cryptoCurrency), period);

@@ -1,4 +1,4 @@
-package com.coinhunter.web.trading.websocket;
+package com.coinhunter.web.ticker.websocket;
 
 import com.coinhunter.core.domain.bithumb.BithumbApiPayload;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 
 @Slf4j
 @Controller
-public class TradingWebsocketController {
+public class TickerWebsocketController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
@@ -27,7 +27,7 @@ public class TradingWebsocketController {
 	private long tickerSendDelay;
 
 	@Autowired
-	public TradingWebsocketController(
+	public TickerWebsocketController(
 		UserDetailsServiceImpl userDetailsService,
 		BithumbApiService bithumbApiService,
 		SimpMessagingTemplate template) {
@@ -36,18 +36,11 @@ public class TradingWebsocketController {
 		this.template = template;
 	}
 
-	@MessageMapping("/trading.ticker/bithumb")
-	@SendTo("/topic/trading/ticker/bithumb")
+	@MessageMapping("/ticker/bithumb")
+	@SendTo("/topic/ticker/bithumb")
 	public BithumbTicker sendTicker(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
 		Thread.sleep(tickerSendDelay);
 		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
 	}
-
-//	@MessageMapping("/trading.ticker/bithumb/{userId}")
-//	@SendTo("/topic/trading/ticker/bithumb/{userId}")
-//	public BithumbTicker ticker(@DestinationVariable long userId, @Payload BithumbApiPayload bithumbApiPayload) throws Exception {
-//		Thread.sleep(tickerSendDelay);
-//		return bithumbApiService.getTickerByCryptoCurrency(bithumbApiPayload.getCryptoCurrency());
-//	}
 
 }

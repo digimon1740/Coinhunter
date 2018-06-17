@@ -33,8 +33,8 @@ define(function () {
 		}
 
 		function connectTickerApiByWebsocket() {
-			let subscriptionTopic = `/topic/trading/ticker/${$scope.exchange}`;
-			let sendingTopic = `/app/trading.ticker/${$scope.exchange}`;
+			let subscriptionTopic = `/topic/ticker/${$scope.exchange}`;
+			let sendingTopic = `/app/ticker/${$scope.exchange}`;
 
 			let subscription = (payload, headers, res) => {
 				if (payload && payload.status === "0000" && $scope.cryptoCurrency === payload.cryptoCurrency) {
@@ -205,7 +205,7 @@ define(function () {
 
 		function fetchChartDataAndSettingToSeries(series, cryptoCurrency) {
 			$.ajax({
-				url: `/trading/bithumb/chart?cryptoCurrency=${cryptoCurrency}&period=10M`,
+				url: `/chart/bithumb?cryptoCurrency=${cryptoCurrency}&period=10M`,
 				dataType: 'json',
 			}).then((newBithumbChart) => {
 				if (!newBithumbChart.success) {
