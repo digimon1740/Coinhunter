@@ -3,6 +3,7 @@ package com.coinhunter.core.domain.bithumb.myassets;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Getter
@@ -44,5 +45,18 @@ public class BithumbMyAssets {
 
 	public boolean isEmpty() {
 		return size() == 0;
+	}
+
+	public void sortByCryptoAsset() {
+		myAssets.sort(Comparator.comparing(BithumbBalance::getValue).reversed());
+	}
+
+	public long sumTotalKrw() {
+		if (size() == 0)
+			return 0;
+		double sum = myAssets.stream()
+			.map(myAsset -> myAsset.getTotalCryptoCurrency() * myAsset.getMarketPrice())
+			.reduce(Double::sum).get();
+		return (long) sum;
 	}
 }

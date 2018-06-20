@@ -128,9 +128,6 @@ public class BithumbApiService {
 
 	public BithumbMyAssets getMyAssetsByUserId(long userId) {
 		ApiKey apiKey = apiKeyService.findByUserId(userId);
-		Assert.notNull(apiKey, messageSourceService.getMessage("apikey.not.registered"));
-		Assert.notNull(apiKey.getAccessKey(), messageSourceService.getMessage("apikey.not.registered"));
-		Assert.notNull(apiKey.getSecretKey(), messageSourceService.getMessage("apikey.not.registered"));
 
 		BithumbMyAssets bithumbMyAssets = new BithumbMyAssets();
 		List<CryptoCurrency> cryptoCurrencies = CryptoCurrency.getAllCurrencies();
@@ -147,11 +144,13 @@ public class BithumbApiService {
 			bithumbMyAssets.setSuccess(false);
 			return bithumbMyAssets;
 		}
+
 		bithumbMyAssets.setSuccess(true);
+		bithumbMyAssets.setTotalKrw(bithumbMyAssets.sumTotalKrw());
 		BithumbBalance first = bithumbMyAssets.first();
-		bithumbMyAssets.setTotalKrw(first.getTotalKrw());
 		bithumbMyAssets.setAvailableKrw(first.getAvailableKrw());
 		bithumbMyAssets.setUsingKrw(first.getUsingKrw());
+		bithumbMyAssets.sortByCryptoAsset();
 		return bithumbMyAssets;
 	}
 }

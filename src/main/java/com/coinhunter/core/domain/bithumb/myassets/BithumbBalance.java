@@ -1,12 +1,9 @@
 package com.coinhunter.core.domain.bithumb.myassets;
 
 import com.coinhunter.core.domain.value.CryptoCurrency;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.apache.commons.collections.MapUtils;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +35,8 @@ public class BithumbBalance {
 
 	private double marketPrice;
 
+	private double value;
+
 	private BithumbBalance() {
 	}
 
@@ -60,6 +59,7 @@ public class BithumbBalance {
 	public void setDataProperties() {
 		setTotalCryptoCurrency();
 		setMarketPrice();
+		setValue();
 	}
 
 	private void setTotalCryptoCurrency() {
@@ -69,5 +69,9 @@ public class BithumbBalance {
 
 	private void setMarketPrice() {
 		this.marketPrice = MapUtils.getLongValue(data, "xcoin_last", 0);
+	}
+
+	private void setValue() {
+		this.value = this.totalCryptoCurrency * this.marketPrice;
 	}
 }
