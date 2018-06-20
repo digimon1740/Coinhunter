@@ -1,5 +1,6 @@
 package com.coinhunter.web.account.websocket;
 
+import com.coinhunter.core.domain.bithumb.BithumbApiPayload;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbMyAssets;
 import com.coinhunter.core.domain.value.CryptoCurrency;
@@ -34,9 +35,10 @@ public class MyAssetsWebsocketController {
 
 	@MessageMapping("/my-assets/bithumb")
 	@SendTo("/topic/my-assets/bithumb")
-	public BithumbMyAssets sendMyAssets() throws Exception {
+	public BithumbMyAssets sendMyAssets(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
 		Thread.sleep(balanceSendDelay);
-		return bithumbApiService.getMyAssetsByUserId(userDetailsService.getUserId());
+		log.info("do sendMyAssets : {}", bithumbApiPayload.getId());
+		return bithumbApiService.getMyAssetsByUserId(bithumbApiPayload.getId());
 	}
 
 	@MessageMapping("/my-asset/bithumb")

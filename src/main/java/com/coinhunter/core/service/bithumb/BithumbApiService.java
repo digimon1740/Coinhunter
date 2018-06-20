@@ -95,8 +95,7 @@ public class BithumbApiService {
 		return new BithumbChart(false, cryptoCurrency, null);
 	}
 
-	public BithumbBalance getBalanceByUserId(long userId, CryptoCurrency cryptoCurrency) {
-		ApiKey apiKey = apiKeyService.findByUserId(userId);
+	public BithumbBalance getBalanceByUserId(ApiKey apiKey, CryptoCurrency cryptoCurrency) {
 		Assert.notNull(apiKey, messageSourceService.getMessage("apikey.not.registered"));
 		Assert.notNull(apiKey.getAccessKey(), messageSourceService.getMessage("apikey.not.registered"));
 		Assert.notNull(apiKey.getSecretKey(), messageSourceService.getMessage("apikey.not.registered"));
@@ -119,11 +118,24 @@ public class BithumbApiService {
 			.build();
 	}
 
+	public BithumbBalance getBalanceByUserId(long userId, CryptoCurrency cryptoCurrency) {
+		ApiKey apiKey = apiKeyService.findByUserId(userId);
+		Assert.notNull(apiKey, messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getAccessKey(), messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getSecretKey(), messageSourceService.getMessage("apikey.not.registered"));
+		return getBalanceByUserId(apiKey, cryptoCurrency);
+	}
+
 	public BithumbMyAssets getMyAssetsByUserId(long userId) {
+		ApiKey apiKey = apiKeyService.findByUserId(userId);
+		Assert.notNull(apiKey, messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getAccessKey(), messageSourceService.getMessage("apikey.not.registered"));
+		Assert.notNull(apiKey.getSecretKey(), messageSourceService.getMessage("apikey.not.registered"));
+
 		BithumbMyAssets bithumbMyAssets = new BithumbMyAssets();
 		List<CryptoCurrency> cryptoCurrencies = CryptoCurrency.getAllCurrencies();
 		cryptoCurrencies.stream().forEach(cryptoCurrency -> {
-			BithumbBalance bithumbBalance = getBalanceByUserId(userId, cryptoCurrency);
+			BithumbBalance bithumbBalance = getBalanceByUserId(apiKey, cryptoCurrency);
 			if (!"0000".equals(bithumbBalance.getStatus())) {
 				return;
 			}
