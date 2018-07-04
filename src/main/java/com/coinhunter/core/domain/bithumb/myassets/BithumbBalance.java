@@ -4,6 +4,7 @@ import com.coinhunter.core.domain.value.CryptoCurrency;
 import lombok.*;
 import org.apache.commons.collections.MapUtils;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,12 @@ public class BithumbBalance {
 	private BithumbBalance() {
 	}
 
+	public void setDataProperties() {
+		setTotalCryptoCurrency();
+		setMarketPrice();
+		setValue();
+	}
+
 	public long getTotalKrw() {
 		return MapUtils.getLongValue(data, "total_krw", 0);
 	}
@@ -54,12 +61,6 @@ public class BithumbBalance {
 
 	public boolean isSuccess() {
 		return "0000".equals(status);
-	}
-
-	public void setDataProperties() {
-		setTotalCryptoCurrency();
-		setMarketPrice();
-		setValue();
 	}
 
 	private void setTotalCryptoCurrency() {

@@ -13,6 +13,9 @@ public class BithumbApiDetails {
 	//호가 정보 예: /public/orderbook/BTC
 	private String marketList;
 
+	//거래소 거래 체결 완료 내역 예: /public/transaction_history/BTC
+	private String transactionHistories;
+
 	//계정 정보
 	private String account;
 

@@ -6,6 +6,8 @@ import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbMyAssets;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
+import com.coinhunter.core.domain.bithumb.transaction.histories.BithumbTransactionHistories;
+import com.coinhunter.core.domain.bithumb.transaction.histories.BithumbTransactionHistory;
 import com.coinhunter.core.domain.user.ApiKey;
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import com.coinhunter.core.service.api.ApiKeyService;
@@ -60,14 +62,15 @@ public class BithumbApiService {
 		return result;
 	}
 
-	private String fetchResultFromPublicApi(String url, Map<String, String> map) {
+	private String fetchResultFromPublicApi(String requestPath, Map<String, String> map) {
+		String requestUrl = bithumbApiDetails.getBaseUrl() + requestPath;
 		HttpClient client = new HttpClient();
 		String params = BithumbClientUtils.mapToQueryString(map);
-		return client.get(url, params);
+		return client.get(requestUrl, params);
 	}
 
 	public BithumbTicker getTickerByCryptoCurrency(CryptoCurrency cryptoCurrency) {
-		String apiUrl = bithumbApiDetails.getBaseUrl() + bithumbApiDetails.getTicker();
+		String apiUrl = bithumbApiDetails.getTicker();
 		apiUrl = apiUrl.replace("{cryptoCurrency}", cryptoCurrency.name());
 		try {
 			String result = fetchResultFromPublicApi(apiUrl, null);
@@ -152,5 +155,24 @@ public class BithumbApiService {
 		bithumbMyAssets.setUsingKrw(first.getUsingKrw());
 		bithumbMyAssets.sortByCryptoAsset();
 		return bithumbMyAssets;
+	}
+
+	public BithumbTransactionHistories getTransactionHistories(CryptoCurrency cryptoCurrency) {
+		String apiUrl = bithumbApiDetails.getTransactionHistories();
+		try {
+			apiUrl = apiUrl.replace("{cryptoCurrency}", cryptoCurrency.name());
+			String result = fetchResultFromPublicApi(apiUrl, null);
+			BithumbTransactionHistories bithumbTransactionHistories = jacksonJsonUtils.readValue(result, BithumbTransactionHistories.class);
+			bithumbTransactionHistories.setCryptoCurrency(cryptoCurrency);
+			bithumbTransactionHistories.convertDataToTransactionHistories();
+			return bithumbTransactionHistories;
+		} catch (Exception e) {
+			log.info(e.getMessage(), e);
+		}
+		return BithumbTransactionHistories.builder()
+			.status("5900")
+			.cryptoCurrency(cryptoCurrency)
+			.data(Collections.emptyList())
+			.build();
 	}
 }

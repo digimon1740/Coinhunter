@@ -2,10 +2,6 @@ package com.coinhunter.core.domain.bithumb.ticker;
 
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import lombok.*;
-import org.apache.commons.collections.MapUtils;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 

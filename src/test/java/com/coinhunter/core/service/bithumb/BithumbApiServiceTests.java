@@ -5,6 +5,8 @@ import com.coinhunter.core.domain.bithumb.chart.BithumbChart;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbBalance;
 import com.coinhunter.core.domain.bithumb.myassets.BithumbMyAssets;
 import com.coinhunter.core.domain.bithumb.ticker.BithumbTicker;
+import com.coinhunter.core.domain.bithumb.transaction.histories.BithumbTransactionHistories;
+import com.coinhunter.core.domain.bithumb.transaction.histories.BithumbTransactionHistory;
 import com.coinhunter.core.domain.value.CryptoCurrency;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -52,6 +54,16 @@ public class BithumbApiServiceTests {
 		Assert.assertNotNull(bithumbMyAssets);
 		Assert.assertTrue(bithumbMyAssets.isSuccess());
 		log.info("bithumbMyAssets : {}", bithumbMyAssets);
+	}
+
+	@Test
+	public void getTransactionHistoriesTest() {
+		BithumbTransactionHistories bithumbTransactionHistories = bithumbApiService.getTransactionHistories(CryptoCurrency.EOS);
+		Assert.assertNotNull(bithumbTransactionHistories);
+		Assert.assertNotNull(bithumbTransactionHistories.getBidHistories());
+		Assert.assertNotNull(bithumbTransactionHistories.getAskedHistories());
+		log.info("getBidHistories : {}", bithumbTransactionHistories.getBidHistories());
+		log.info("getAskedHistories : {}", bithumbTransactionHistories.getAskedHistories());
 	}
 
 

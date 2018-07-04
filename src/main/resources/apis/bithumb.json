@@ -2,6 +2,7 @@
   "baseUrl": "https://api.bithumb.com",
   "ticker": "/public/ticker/{cryptoCurrency}",
   "marketList": "/public/orderbook/{cryptoCurrency}",
+  "transactionHistories" : "/public/transaction_history/{cryptoCurrency}",
   "account": "/info/account",
   "balance": "/info/balance",
   "chart" : "https://www.bithumb.com/resources/chart/{cryptoCurrency}_xcoinTrade_{period}.json?symbol={cryptoCurrency}&resolution=0.5&from=1527862257&to=1528726317&strTime={timeStamp}"

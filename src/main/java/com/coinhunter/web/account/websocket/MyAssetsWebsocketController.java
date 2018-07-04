@@ -37,7 +37,6 @@ public class MyAssetsWebsocketController {
 	@SendTo("/topic/my-assets/bithumb")
 	public BithumbMyAssets sendMyAssets(@Payload BithumbApiPayload bithumbApiPayload) throws Exception {
 		Thread.sleep(balanceSendDelay);
-		log.info("do sendMyAssets : {}", bithumbApiPayload.getId());
 		return bithumbApiService.getMyAssetsByUserId(bithumbApiPayload.getId());
 	}
 
