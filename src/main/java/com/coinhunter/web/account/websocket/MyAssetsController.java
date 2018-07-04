@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 
 @Slf4j
 @Controller
-public class MyAssetsWebsocketController {
+public class MyAssetsController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
@@ -26,7 +26,7 @@ public class MyAssetsWebsocketController {
 	private long balanceSendDelay;
 
 	@Autowired
-	public MyAssetsWebsocketController(
+	public MyAssetsController(
 		UserDetailsServiceImpl userDetailsService,
 		BithumbApiService bithumbApiService) {
 		this.userDetailsService = userDetailsService;

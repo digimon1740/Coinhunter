@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/my-assets")
-public class MyAssetsRestController {
+public class MyAssetsController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
 	private BithumbApiService bithumbApiService;
 
 	@Autowired
-	public MyAssetsRestController(
+	public MyAssetsController(
 		UserDetailsServiceImpl userDetailsService,
 		BithumbApiService bithumbApiService) {
 		this.userDetailsService = userDetailsService;

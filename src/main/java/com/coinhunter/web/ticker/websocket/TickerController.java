@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 
 @Slf4j
 @Controller
-public class TickerWebsocketController {
+public class TickerController {
 
 	private UserDetailsServiceImpl userDetailsService;
 
@@ -27,7 +27,7 @@ public class TickerWebsocketController {
 	private long tickerSendDelay;
 
 	@Autowired
-	public TickerWebsocketController(
+	public TickerController(
 		UserDetailsServiceImpl userDetailsService,
 		BithumbApiService bithumbApiService,
 		SimpMessagingTemplate template) {
