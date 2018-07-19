@@ -1,5 +1,7 @@
 CREATE SCHEMA `coinhunter` DEFAULT CHARACTER SET utf8;
-grant create, select, insert, update, delete, drop on coinhunter.* to 'coinhunter'@'127.0.0.1' identified by 'zhak!@#';
+CREATE USER 'coinhunter'@'127.0.0.1' IDENTIFIED BY 'zhak!@#';
+GRANT ALL PRIVILEGES ON * . * TO 'coinhunter'@'127.0.0.1';
+-- grant create, select, insert, update, delete, drop on coinhunter.* to 'coinhunter'@'127.0.0.1' identified by 'zhak!@#';
 flush privileges;
 
 -- Used by Spring Remember Me API.
