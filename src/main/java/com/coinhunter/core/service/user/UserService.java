@@ -54,6 +54,7 @@ public class UserService {
 			throw new ResourceExistsException(messageSourceService.getMessage("user.exists"));
 		}
 		user.setPassword(PasswordEncodeUtils.encodePassword(user.getPassword()));
+		user.setRegTime(LocalDateTime.now());
 		return userRepository.save(user);
 	}
 
