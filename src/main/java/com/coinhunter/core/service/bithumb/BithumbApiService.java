@@ -62,15 +62,14 @@ public class BithumbApiService {
 		return result;
 	}
 
-	private String fetchResultFromPublicApi(String requestPath, Map<String, String> map) {
-		String requestUrl = bithumbApiDetails.getBaseUrl() + requestPath;
+	private String fetchResultFromPublicApi(String url, Map<String, String> map) {
 		HttpClient client = new HttpClient();
 		String params = BithumbClientUtils.mapToQueryString(map);
-		return client.get(requestUrl, params);
+		return client.get(url, params);
 	}
 
 	public BithumbTicker getTickerByCryptoCurrency(CryptoCurrency cryptoCurrency) {
-		String apiUrl = bithumbApiDetails.getTicker();
+		String apiUrl = bithumbApiDetails.getBaseUrl() + bithumbApiDetails.getTicker();
 		apiUrl = apiUrl.replace("{cryptoCurrency}", cryptoCurrency.name());
 		try {
 			String result = fetchResultFromPublicApi(apiUrl, null);
@@ -158,7 +157,7 @@ public class BithumbApiService {
 	}
 
 	public BithumbTransactionHistories getTransactionHistories(CryptoCurrency cryptoCurrency) {
-		String apiUrl = bithumbApiDetails.getTransactionHistories();
+		String apiUrl = bithumbApiDetails.getBaseUrl() + bithumbApiDetails.getTransactionHistories();
 		try {
 			apiUrl = apiUrl.replace("{cryptoCurrency}", cryptoCurrency.name());
 			String result = fetchResultFromPublicApi(apiUrl, null);

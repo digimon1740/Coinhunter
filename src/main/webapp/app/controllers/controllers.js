@@ -11,6 +11,9 @@ define(function (require) {
 	// Trading
 	controllers.controller('TradingCtrl', require('controllers/trading/trading.controller'));
 
+	// TransactionHistories
+	controllers.controller('TransactionHistoriesCtrl', require('controllers/transactions/transaction.histories.controller'));
+
 	// Account
 	controllers.controller('MyAssetsCtrl', require('controllers/account/my.assets.controller'));
 	controllers.controller('ProfileCtrl', require('controllers/account/profile.controller'));

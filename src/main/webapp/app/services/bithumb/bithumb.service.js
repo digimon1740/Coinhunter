@@ -14,6 +14,11 @@ define(['angular'], function (angular) {
 					isArray: false,
 				},
 			}),
+			transactionHistories: $resource('/transaction/histories/bithumb/:cryptoCurrency', {}, {
+				get: {
+					isArray: false,
+				},
+			}),
 			myAssets : $resource('/my-assets/bithumb', {}, {
 				list: {
 					isArray: false,
